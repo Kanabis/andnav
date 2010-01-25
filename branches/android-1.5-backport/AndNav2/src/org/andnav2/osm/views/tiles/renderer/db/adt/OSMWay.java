@@ -61,22 +61,18 @@ public class OSMWay extends ArrayList<OSMNode> implements IOSMDataType, OSMWayCo
 		return other != null && other instanceof OSMWay && this.mOSMID == ((OSMWay)other).mOSMID;
 	}
 
-	@Override
 	public boolean hasName() {
 		return this.mName != null && this.mName.length() > 0;
 	}
 
-	@Override
 	public boolean hasOSMID() {
 		return this.mOSMID != -1;
 	}
 
-	@Override
 	public long getOSMID() {
 		return this.mOSMID;
 	}
 
-	@Override
 	public String getName() {
 		return this.mName;
 	}

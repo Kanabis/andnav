@@ -110,7 +110,6 @@ public class Downtime implements Comparable<Downtime>, TimeConstants {
 	// Methods from SuperClass/Interfaces
 	// ===========================================================
 
-	@Override
 	public int compareTo(final Downtime another) {
 		return (int)(this.mStartTimestamp - another.mStartTimestamp);
 	}

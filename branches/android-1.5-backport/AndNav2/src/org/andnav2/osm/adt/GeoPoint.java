@@ -235,12 +235,10 @@ public class GeoPoint implements IGeoPoint, Parcelable, MathConstants, GeoConsta
 		}
 	};
 
-	@Override
 	public int describeContents() {
 		return 0;
 	}
 
-	@Override
 	public void writeToParcel(final Parcel out, final int arg1) {
 		out.writeInt(this.mLatitudeE6);
 		out.writeInt(this.mLongitudeE6);

@@ -84,7 +84,6 @@ public class TraceManager implements OSMConstants {
 		if(pContext != null){
 			/* Prepare the callback. */
 			final CommonCallback<Void> callback = new CommonCallback<Void>(){
-				@Override
 				public void onFailure(final Throwable t) {
 					// look up the notification manager service
 					final NotificationManager nm = (NotificationManager)pContext.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -109,7 +108,6 @@ public class TraceManager implements OSMConstants {
 					doSaveToExternal(pContext, pRecordedGeoPoints);
 				}
 
-				@Override
 				public void onSuccess(final Void result) {
 					/* Nothing. */
 				}

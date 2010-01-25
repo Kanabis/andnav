@@ -156,7 +156,6 @@ public class Util implements OSMConstants {
 
 		/* We want only uniqe new values. */
 		final Set<ValuePair> newPoints = new TreeSet<ValuePair>(new Comparator<ValuePair>(){
-			@Override
 			public int compare(final ValuePair a, final ValuePair b) {
 				return a.compareTo(b);
 			}

@@ -42,7 +42,6 @@ public class POICategorySelector extends BasePOICategorySelectionActivity {
 	protected OnChildClickListener onCreateOnChildClickListener() {
 		return new OnChildClickListener(){
 			@SuppressWarnings("unchecked")
-			@Override
 			public boolean onChildClick(final ExpandableListView parent, final View v, final int groupPosition, final int childPosition, final long id) {
 				final HashMap<String, String> map = (HashMap<String, String>)POICategorySelector.this.mExpListAdapter.getChild(groupPosition, childPosition);
 				final String poiTypeRawName = map.get(KEY_SUBTYPERAWNAME);

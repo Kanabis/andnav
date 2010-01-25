@@ -166,7 +166,6 @@ public class SDStreetNumber extends AndNavBaseActivity {
 	 * which calls handleButtonClick(String caption).*/
 	protected void applyNumberPadGridOnItemClickListener() {
 		this.numberPadGrid.setOnItemClickListener(new OnItemClickListener(){
-			@Override
 			public void onItemClick(final AdapterView<?> arg0, final View v, final int arg2, final long arg3) {
 				/* Extract the Caption of the Button. */
 				final String theCaption = ((Button)v).getText().toString();
@@ -177,7 +176,6 @@ public class SDStreetNumber extends AndNavBaseActivity {
 
 	protected void applyTopButtonListeners() {
 		this.streetNumberEditText.setOnKeyListener(new OnKeyListener(){
-			@Override
 			public boolean onKey(final View arg0, final int arg1, final KeyEvent ke) {
 				if(ke.getAction() == KeyEvent.ACTION_DOWN){
 					if(ke.getKeyCode() == KeyEvent.KEYCODE_ENTER || ke.getKeyCode() == KeyEvent.KEYCODE_DPAD_CENTER){
@@ -252,7 +250,6 @@ public class SDStreetNumber extends AndNavBaseActivity {
 	 * advance to the next screen(Street-entry).
 	 * This Listener will get called on actual CLICKS to the BUTTONS! */
 	protected OnClickListener gridButtonListener = new OnClickListener() {
-		@Override
 		public void onClick(final View v) {
 			/* Extract the Caption of the Button. */
 			final String theCaption = ((Button)v).getText().toString();

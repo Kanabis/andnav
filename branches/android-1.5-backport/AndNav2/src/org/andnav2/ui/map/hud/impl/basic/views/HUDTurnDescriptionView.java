@@ -33,22 +33,18 @@ public class HUDTurnDescriptionView extends TextView implements IHUDTurnDescript
 	// Methods from SuperClass/Interfaces
 	// ===========================================================
 
-	@Override
 	public void reset() {
 		setTurnDescription("");
 	}
 
-	@Override
 	public void setTurnDescription(final String pTurnDescription) {
 		this.setText(pTurnDescription);
 	}
 
-	@Override
 	public String getTurnDescription() {
 		return this.getText().toString();
 	}
 
-	@Override
 	public void setTurnDescriptionOnClickListener(final OnClickListener pOnClickListener) {
 		this.setOnClickListener(pOnClickListener);
 	}

@@ -230,7 +230,7 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 	// ===========================================================
 
 	@Override
-	protected void onSetupContentView() {
+	public void onSetupContentView() {
 		this.setContentView(R.layout.whereami_map);
 		super.mOSMapView = (OSMMapView)findViewById(R.id.map_whereami);
 		super.mOSMapView.setProviderInfo(Preferences.getMapViewProviderInfoWhereAmI(this));
@@ -243,7 +243,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 		this.mMyLocationOverlay.setLocation(getLastKnownLocation(true));
 
 		this.mTrafficOverlay = new TrafficOverlay(this, new ArrayList<TrafficOverlayItem>(), new OnItemTapListener<TrafficOverlayItem>(){
-			@Override
 			public boolean onItemTap(final int index, final TrafficOverlayItem item) {
 				if(index >= WhereAmIMap.this.mTrafficOverlay.getOverlayItems().size()) {
 					throw new IllegalArgumentException();
@@ -383,10 +382,8 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 		this.mIvCompass = (CompassImageView)this.findViewById(R.id.iv_whereami_compass);
 
 		this.mOSMapView.addChangeListener(new OnChangeListener(){
-			@Override
 			public void onChange() {
 				runOnUiThread(new Runnable(){
-					@Override
 					public void run() {
 						WhereAmIMap.this.mScaleIndicatorView.refresh(WhereAmIMap.this.mOSMapView);
 					}
@@ -461,7 +458,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 					WhereAmIMap.this.updateUIForAutoCenterChange(this.CENTERMODE_NONE);
 
 					new Handler().postDelayed(new Runnable(){
-						@Override
 						public void run() {
 							if(items.size() == 1) {
 								WhereAmIMap.super.mOSMapView.setZoomLevel(13);
@@ -633,7 +629,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 	/**
 	 * Gets called when an item of the PinOverlay gets tapped.
 	 */
-	@Override
 	public boolean onItemTap(final int index, final OSMMapViewOverlayItem item) {
 		if(index >= this.mSearchPinList.size()) {
 			throw new IllegalArgumentException();
@@ -956,12 +951,10 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 				});
 			case DIALOG_INPUT_LAT_LON:
 				return CommonDialogFactory.createInputLatLonDialog(this, new CommonCallback<GeoPoint>(){
-					@Override
 					public void onFailure(final Throwable t) {
 						Toast.makeText(WhereAmIMap.this, R.string.dlg_input_direct_lat_lon_malformed, Toast.LENGTH_SHORT).show();
 					}
 
-					@Override
 					public void onSuccess(final GeoPoint result) {
 						refreshPinOverlay(result);
 					}
@@ -989,12 +982,10 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 				});
 			case DIALOG_INPUT_FAVORITE_NAME:
 				return CommonDialogFactory.createInputFavoriteNameDialog(WhereAmIMap.this, new CommonCallback<String>(){
-					@Override
 					public void onFailure(final Throwable t) {
 						Toast.makeText(WhereAmIMap.this, R.string.toast_error_adding_favorite, Toast.LENGTH_LONG).show();
 					}
 
-					@Override
 					public void onSuccess(final String result) {
 						try {
 							DBManager.addFavorite(WhereAmIMap.this, result, WhereAmIMap.this.mGPLastMapClick.getLatitudeE6(), WhereAmIMap.this.mGPLastMapClick.getLongitudeE6());
@@ -1134,7 +1125,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 		.setTitle(R.string.coordinates)
 		.setMessage(getString(R.string.maps_menu_getcentetcoordinates_message, mapCenter.getLatitudeAsDouble(), mapCenter.getLongitudeAsDouble()))
 		.setNeutralButton(R.string.clipboard, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				final ClipboardManager cb = (ClipboardManager) WhereAmIMap.this.getSystemService(Context.CLIPBOARD_SERVICE);
 
@@ -1144,7 +1134,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 			}
 		})
 		.setNegativeButton(R.string.ok, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 			}
@@ -1162,7 +1151,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 		}
 
 		new AlertDialog.Builder(this).setSingleChoiceItems(zoomLevelsForThisRenderer, 12, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 				// which is the zoomLevel
@@ -1202,7 +1190,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 
 		if(pUptoZoomLevel > 0){
 			ab.setNeutralButton(R.string.dlg_preloader_rect_reducezoom, new DialogInterface.OnClickListener(){
-				@Override
 				public void onClick(final DialogInterface d, final int which) {
 					d.dismiss();
 					preloadMapTilesUpToZoomLevel(pUptoZoomLevel - 1);
@@ -1211,19 +1198,16 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 		}
 
 		ab.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				final String progressMessage = getString(R.string.pdg_preloader_message);
 				final ProgressDialog pd = ProgressDialog.show(WhereAmIMap.this, getString(R.string.pdg_preloader_title), String.format(progressMessage, 0, tileCount), true, true);
 				new Thread(new Runnable(){
-					@Override
 					public void run() {
 						final OSMMapTileFilesystemCache fsProvider = pTileManager.getFileSystemCache();
 						if(fsProvider.getMaxFSCacheByteSize() < bytesEpectedNeeded){
 							final int newCacheByteSize = (int)(bytesEpectedNeeded * 1.1f);
 
 							runOnUiThread(new Runnable(){
-								@Override
 								public void run() {
 									pd.setMessage(getString(R.string.pdg_settings_cache_clear_cache_title));
 									Toast.makeText(WhereAmIMap.this, String.format(getString(R.string.toast_preloader_cache_increased_message), FileSizeFormatter.formatFileSize(newCacheByteSize)), Toast.LENGTH_LONG).show();
@@ -1239,7 +1223,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 							final int fsCacheBytesFree = fsProvider.getMaxFSCacheByteSize() - fsProvider.getCurrentFSCacheByteSize();
 							if(bytesEpectedNeeded > fsCacheBytesFree * 0.9f){ // 10% margin
 								runOnUiThread(new Runnable(){
-									@Override
 									public void run() {
 										pd.setMessage(getString(R.string.pdg_settings_cache_clear_cache_title));
 									}
@@ -1249,14 +1232,12 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 						}
 
 						runOnUiThread(new Runnable(){
-							@Override
 							public void run() {
 								new OSMMapTilePreloader().loadAllToCacheAsync(tilesNeeded,
 										pUptoZoomLevel,
 										providerInfo,
 										pTileManager,
 										new OnProgressChangeListener(){
-									@Override
 									public void onProgressChange(final int progress, final int max) {
 										if(progress != max) {
 											pd.setMessage(String.format(progressMessage, progress, max));
@@ -1274,7 +1255,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 			}
 		});
 		ab.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 			}
@@ -1307,7 +1287,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 		}
 
 		new AlertDialog.Builder(this).setSingleChoiceItems(minuteStrings, 4, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 				item.setEnabled(false); // Disable AAS
@@ -1315,7 +1294,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 				final int minuteToResolve = minuteValues[which];
 				Toast.makeText(WhereAmIMap.this, R.string.please_wait_a_moment, Toast.LENGTH_LONG).show();
 				new Thread(new Runnable(){
-					@Override
 					public void run() {
 						try {
 							final AASResponse aasr = AASRequester.request(WhereAmIMap.this.mOSMapView.getMapCenter(), minuteToResolve);
@@ -1326,7 +1304,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 							}
 
 							runOnUiThread(new Runnable(){
-								@Override
 								public void run() {
 									Toast.makeText(WhereAmIMap.this, R.string.toast_map_accessibilityanalysis_finished, Toast.LENGTH_LONG).show();
 								}
@@ -1334,7 +1311,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 
 						} catch(final ORSException orse){
 							runOnUiThread(new Runnable(){
-								@Override
 								public void run() {
 									Toast.makeText(WhereAmIMap.this, orse.getErrors().get(0).toUserString(), Toast.LENGTH_LONG).show();
 								}
@@ -1399,7 +1375,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 				new AlertDialog.Builder(WhereAmIMap.this)
 				.setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener(){
 
-					@Override
 					public void onClick(final DialogInterface d, final int which) {
 						d.dismiss();
 						switch(which){
@@ -1427,7 +1402,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 			}
 		});
 		this.mOSMapView.setOnTouchListener(new OnTouchListener(){
-			@Override
 			public boolean onTouch(final View v, final MotionEvent ev) {
 				if(WhereAmIMap.this.mNavPointsCrosshairMode){
 					return false;
@@ -1446,14 +1420,12 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 
 	private void applyZoomButtonListeners(){
 		this.findViewById(R.id.iv_whereami_zoomin).setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View v) {
 				WhereAmIMap.this.mOSMapView.zoomIn();
 				WhereAmIMap.this.mOSMapView.invalidate();
 			}
 		});
 		this.findViewById(R.id.iv_whereami_zoomout).setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View v) {
 				WhereAmIMap.this.mOSMapView.zoomOut();
 				WhereAmIMap.this.mOSMapView.invalidate();
@@ -1463,13 +1435,11 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 
 	private void applyQuickButtonListeners() {
 		this.mMapItemControlView.setItemizedOverlayControlViewListener(new OSMMapViewItemizedOverlayControlView.ItemizedOverlayControlViewListener(){
-			@Override
 			public void onCenter() {
 				final OSMMapViewOverlayItem oi = WhereAmIMap.this.mSearchPinList.get(WhereAmIMap.this.mSearchPinListIndex);
 				WhereAmIMap.this.mOSMapView.getController().animateTo(oi, AnimationType.MIDDLEPEAKSPEED);
 			}
 
-			@Override
 			public void onNavTo() {
 				final GeoPoint gp = WhereAmIMap.this.mSearchPinList.get(WhereAmIMap.this.mSearchPinListIndex);
 
@@ -1483,7 +1453,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 				doNavToGeoPoint(gp);
 			}
 
-			@Override
 			public void onNext() {
 				WhereAmIMap.this.mSearchPinListIndex++;
 				WhereAmIMap.this.mSearchPinListIndex = WhereAmIMap.this.mSearchPinListIndex % WhereAmIMap.this.mSearchPinList.size();
@@ -1491,7 +1460,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 				WhereAmIMap.this.mOSMapView.getController().animateTo(oi, AnimationType.MIDDLEPEAKSPEED);
 			}
 
-			@Override
 			public void onPrevious() {
 				if(WhereAmIMap.this.mSearchPinListIndex == 0) {
 					WhereAmIMap.this.mSearchPinListIndex = WhereAmIMap.this.mSearchPinList.size() - 1;
@@ -1506,7 +1474,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 
 		/* Left side. */
 		this.mIbtnNavPointsSetStart.setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View v) {
 				/* Set destination-flag and start crosshair-mode. */
 				WhereAmIMap.this.mStartFlagOverlay.setLocation(WhereAmIMap.this.mOSMapView.getMapCenter());
@@ -1518,7 +1485,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 
 		/* Left side. */
 		this.mIbtnNavPointsSetDestination.setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View v) {
 				/* Set destination-flag and start crosshair-mode. */
 				WhereAmIMap.this.mDestinationFlagOverlay.setLocation(WhereAmIMap.this.mOSMapView.getMapCenter());
@@ -1529,7 +1495,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 
 		/* Left side. */
 		this.mIbtnNavPointsDoCancel.setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View v) {
 				/* End crosshair-mode. */
 				updateUIForNavPointsCrosshairMode(false);
@@ -1537,7 +1502,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 		});
 
 		this.mIbtnNavPointsDoStart.setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View arg0) {
 				if(WhereAmIMap.this.mNavPointsCrosshairMode){
 					/* User chose a good start+destination. */
@@ -1556,7 +1520,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 		});
 
 		this.mEtSearch.setOnKeyListener(new OnKeyListener(){
-			@Override
 			public boolean onKey(final View v, final int keyCode, final KeyEvent event) {
 				if(event.getAction() == KeyEvent.ACTION_UP){
 					switch(event.getKeyCode()){
@@ -1572,7 +1535,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 		});
 
 		this.mIbtnSearch.setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View arg0) {
 				if(WhereAmIMap.this.mEtSearch.getVisibility() == View.GONE){
 					showDialog(DIALOG_SELECT_FREEFORM_OR_STRUCTURED_SEARCH);
@@ -1585,7 +1547,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 
 		/* Right side. */
 		this.mIbtnChooseRenderer.setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View arg0) {
 				startDelayedHideControlsAnimation();
 				final OSMMapTileProviderInfo[] providers = OSMMapTileProviderInfo.values();
@@ -1605,7 +1566,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 				new AlertDialog.Builder(WhereAmIMap.this)
 				.setTitle(R.string.maps_menu_submenu_renderers)
 				.setSingleChoiceItems(renderersNames, curRendererIndex , new DialogInterface.OnClickListener(){
-					@Override
 					public void onClick(final DialogInterface d, final int which) {
 						changeProviderInfo(providers[which]);
 						d.dismiss();
@@ -1615,7 +1575,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 		});
 
 		this.mIbtnWhereAmI.setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View arg0) {
 				startDelayedHideControlsAnimation();
 				Toast.makeText(WhereAmIMap.this, R.string.please_wait_a_moment, Toast.LENGTH_SHORT).show();
@@ -1624,12 +1583,10 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 				final UnitSystem us = Preferences.getUnitSystem(WhereAmIMap.this);
 
 				new Thread(new Runnable(){
-					@Override
 					public void run() {
 						try {
 							final ArrayList<GeocodedAddress> addr = LUSRequester.requestReverseGeocode(WhereAmIMap.this, mapCenter, ReverseGeocodePreferenceType.STREETADDRESS);
 							runOnUiThread(new Runnable(){
-								@Override
 								public void run() {
 									if(addr == null || addr.size() == 0){
 										Toast.makeText(WhereAmIMap.this, R.string.whereami_location_not_resolvable, Toast.LENGTH_SHORT).show();
@@ -1655,7 +1612,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 							});
 						} catch (final ORSException e) {
 							runOnUiThread(new Runnable(){
-								@Override
 								public void run() {
 									Toast.makeText(WhereAmIMap.this, e.getErrors().get(0).toUserString(), Toast.LENGTH_LONG).show();
 								}
@@ -1671,7 +1627,6 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 		});
 
 		this.mIbtnCenter.setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View arg0) {
 				startDelayedHideControlsAnimation();
 				final int newMode = (WhereAmIMap.this.mDoCenter + 1) % 3;
@@ -1847,13 +1802,11 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 
 	private void searchORSLocations(final String query) {
 		new Thread(new Runnable(){
-			@Override
 			public void run() {
 				try {
 					final ArrayList<GeocodedAddress> ret = LUSRequester.requestFreeformAddress(WhereAmIMap.this, null, query);
 
 					runOnUiThread(new Runnable(){
-						@Override
 						public void run() {
 							if(ret == null || ret.size() == 0){
 								Toast.makeText(WhereAmIMap.this, R.string.whereami_search_no_places_found, Toast.LENGTH_SHORT).show();
@@ -1890,14 +1843,12 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 
 				} catch (final ORSException e) {
 					runOnUiThread(new Runnable(){
-						@Override
 						public void run() {
 							WhereAmIMap.this.clearPinOverlay();
 						}
 					});
 				} catch (final Exception e) {
 					runOnUiThread(new Runnable(){
-						@Override
 						public void run() {
 							WhereAmIMap.this.clearPinOverlay();
 						}

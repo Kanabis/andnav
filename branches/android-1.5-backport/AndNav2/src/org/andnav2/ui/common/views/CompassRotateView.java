@@ -66,7 +66,6 @@ public class CompassRotateView extends RotateView implements SensorListener {
 	// Methods from SuperClass/Interfaces
 	// ===========================================================
 
-	@Override
 	public void onAccuracyChanged(final int sensor, final int accuracy) {
 		if(!this.mToastShownOnce  && this.mActive && accuracy < SensorManager.SENSOR_STATUS_ACCURACY_MEDIUM){
 			this.mToastShownOnce = true;

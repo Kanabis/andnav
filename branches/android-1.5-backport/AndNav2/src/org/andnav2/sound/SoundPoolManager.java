@@ -67,7 +67,6 @@ public class SoundPoolManager implements ISoundManager {
 	// Methods from SuperClass/Interfaces
 	// ===========================================================
 
-	@Override
 	public void preloadSound(final int resID) {
 		if(this.mSoundPoolMap.containsKey(resID)) {
 			return;
@@ -76,14 +75,12 @@ public class SoundPoolManager implements ISoundManager {
 		this.mSoundPoolMap.put(resID, this.mSoundPool.load(getContext(), resID, 1));
 	}
 
-	@Override
 	public void preloadSounds(final int[] pResIDs){
 		for (final int r : pResIDs) {
 			preloadSound(r);
 		}
 	}
 
-	@Override
 	public void playSound(final int pSoundResId) {
 		if(!this.mSoundPoolMap.containsKey(pSoundResId)) {
 			this.mSoundPoolMap.put(pSoundResId, this.mSoundPool.load(getContext(), pSoundResId, 1));
@@ -93,12 +90,10 @@ public class SoundPoolManager implements ISoundManager {
 		this.mSoundPool.play(this.mSoundPoolMap.get(pSoundResId), streamVolume, streamVolume, 1, 0, 1f);
 	}
 
-	@Override
 	public void playFollowUpSounds(final int ... soundResIds) {
 		throw new UnsupportedOperationException("Not yet supported method");
 	}
 
-	@Override
 	public void releaseAll() {
 		for(final int i : this.mSoundPoolMap.values()) {
 			this.mSoundPool.unload(i);

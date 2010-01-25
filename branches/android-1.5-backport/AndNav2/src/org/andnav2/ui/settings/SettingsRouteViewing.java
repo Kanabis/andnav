@@ -84,12 +84,10 @@ public class SettingsRouteViewing extends AndNavBaseActivity{
 		this.mSpinSnapToRouteRadius.setAdapter(adapter);
 
 		this.mSpinSnapToRouteRadius.setOnItemSelectedListener(new OnItemSelectedListener(){
-			@Override
 			public void onItemSelected(final AdapterView<?> parent, final View view, final int position, final long id){
 				Preferences.saveSnapToRouteRadius(SettingsRouteViewing.this, position);
 			}
 
-			@Override
 			public void onNothingSelected(final AdapterView<?> arg0) {
 
 			}
@@ -108,12 +106,10 @@ public class SettingsRouteViewing extends AndNavBaseActivity{
 		this.mSpinMaxZoomlevel.setAdapter(adapter);
 
 		this.mSpinMaxZoomlevel.setOnItemSelectedListener(new OnItemSelectedListener(){
-			@Override
 			public void onItemSelected(final AdapterView<?> parent, final View view, final int position, final long id){
 				Preferences.saveAutoZoomMaxLevel(SettingsRouteViewing.this, position);
 			}
 
-			@Override
 			public void onNothingSelected(final AdapterView<?> arg0) {
 
 			}
@@ -139,7 +135,6 @@ public class SettingsRouteViewing extends AndNavBaseActivity{
 	private void applyViewListeners() {
 		{
 			this.mChkAutozoomEnable.setOnCheckedChangeListener(new OnCheckedChangeListener(){
-				@Override
 				public void onCheckedChanged(final CompoundButton b, final boolean isChecked) {
 					Preferences.saveAutoZoomEnabled(SettingsRouteViewing.this, isChecked);
 				}
@@ -147,7 +142,6 @@ public class SettingsRouteViewing extends AndNavBaseActivity{
 		}
 		{
 			this.mChkSnapToRouteEnable.setOnCheckedChangeListener(new OnCheckedChangeListener(){
-				@Override
 				public void onCheckedChanged(final CompoundButton b, final boolean isChecked) {
 					Preferences.saveSnapToRoute(SettingsRouteViewing.this, isChecked);
 				}

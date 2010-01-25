@@ -58,7 +58,6 @@ public class TrailMappingUploader implements Constants {
 
 	public static void uploadAsync(final List<GeoPoint> recordedGeoPoints){
 		new Thread(new Runnable(){
-			@Override
 			public void run() {
 				upload(recordedGeoPoints);
 			}

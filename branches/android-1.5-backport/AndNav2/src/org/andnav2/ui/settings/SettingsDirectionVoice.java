@@ -13,7 +13,7 @@ import org.andnav2.ui.common.OnClickOnFocusChangedListenerAdapter;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
+//FIXME import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -89,14 +89,14 @@ public class SettingsDirectionVoice extends AndNavBaseActivity {
 
 	private void applyTopButtonListeners() {
 		new OnClickOnFocusChangedListenerAdapter(this.findViewById(R.id.ibtn_settings_directionvoice_testtts)){
-			private TextToSpeech mTTS;
+// FIXME			private TextToSpeech mTTS;
 			private boolean mTTSAvailable = false;
 
 			@Override
 			public void onClicked(final View me) {
+				/* FIXME
 				if(this.mTTS == null){
 					this.mTTS = new TextToSpeech(SettingsDirectionVoice.this, new TextToSpeech.OnInitListener(){
-						@Override
 						public void onInit(final int version) {
 							mTTSAvailable = true;
 							//							mTTS.setLanguage(Preferences.getDrivingDirectionsLanguage(SettingsDirectionVoice.this).getIETFLAnguageTag());
@@ -107,7 +107,7 @@ public class SettingsDirectionVoice extends AndNavBaseActivity {
 					if(this.mTTSAvailable) {
 						this.mTTS.speak(TEST_MESSAGE, 0, null);
 					}
-				}
+				}*/
 			}
 		};
 

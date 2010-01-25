@@ -78,14 +78,12 @@ public class ORSServerListAdapter extends BaseAdapter implements Constants {
 
 	public Object getItem(final int position) { return this.mItems.get(position); }
 
-	@Override
 	public long getItemId(final int position) { return position; }
 
 	// ===========================================================
 	// Methods
 	// ===========================================================
 
-	@Override
 	public View getView(final int position, final View convertView, final ViewGroup parent) {
 		final View v;
 		if (convertView != null){
@@ -152,7 +150,6 @@ public class ORSServerListAdapter extends BaseAdapter implements Constants {
 			this.mORSServer = pORServer;
 		}
 
-		@Override
 		public int compareTo(final ORSServerItem another) {
 			return this.mORSServer.SERVERNAME.compareToIgnoreCase(another.mORSServer.SERVERNAME);
 		}
@@ -161,7 +158,6 @@ public class ORSServerListAdapter extends BaseAdapter implements Constants {
 			this.mLatencyMS = NOT_SET;
 			this.mStatus = ServerStatus.UNKNOWN;
 			new Thread(new Runnable(){
-				@Override
 				public void run() {
 					try {
 						final PingResult pr = ORSServerItem.this.mORSServer.ping();
@@ -195,12 +191,10 @@ public class ORSServerListAdapter extends BaseAdapter implements Constants {
 			}
 		};
 
-		@Override
 		public int describeContents() {
 			return 0;
 		}
 
-		@Override
 		public void writeToParcel(final Parcel out, final int flags) {
 			out.writeParcelable(this.mORSServer, 0);
 		}

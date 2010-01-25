@@ -96,7 +96,6 @@ public class SettingsHUD extends AndNavBaseActivity implements PreferenceConstan
 		this.mSpinHUDImpls.setAdapter(adapter);
 
 		this.mSpinHUDImpls.setOnItemSelectedListener(new OnItemSelectedListener(){
-			@Override
 			public void onItemSelected(final AdapterView<?> parent, final View view, final int position, final long id){
 				if(SettingsHUD.this.mCurrentHUDImpl.getID() != SettingsHUD.this.mHUDImpls[position].getID()){
 					SettingsHUD.this.mCurrentHUDImpl = SettingsHUD.this.mHUDImpls[position];
@@ -106,7 +105,6 @@ public class SettingsHUD extends AndNavBaseActivity implements PreferenceConstan
 				}
 			}
 
-			@Override
 			public void onNothingSelected(final AdapterView<?> arg0) {
 
 			}
@@ -114,7 +112,6 @@ public class SettingsHUD extends AndNavBaseActivity implements PreferenceConstan
 
 
 		this.mIbtnVariationNext.setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View arg0) {
 				SettingsHUD.this.mVariationFlipper.setInAnimation(SettingsHUD.this.mAnimSlideInLeft);
 				SettingsHUD.this.mVariationFlipper.setOutAnimation(SettingsHUD.this.mAnimSlideOutRight);
@@ -125,7 +122,6 @@ public class SettingsHUD extends AndNavBaseActivity implements PreferenceConstan
 		});
 
 		this.mIbtnVariationPrevious.setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View arg0) {
 				SettingsHUD.this.mVariationFlipper.setInAnimation(SettingsHUD.this.mAnimSlideInRight);
 				SettingsHUD.this.mVariationFlipper.setOutAnimation(SettingsHUD.this.mAnimSlideOutLeft);

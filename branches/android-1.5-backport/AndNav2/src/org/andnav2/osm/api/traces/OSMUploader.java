@@ -140,7 +140,6 @@ public class OSMUploader implements OSMConstants, OSMTraceAPIConstants {
 	 */
 	public static void uploadAsync(final List<GeoPoint> recordedGeoPoints, final String username, final String password, final String description, final String tags, final boolean addDateTags, final String pseudoFileName, final CommonCallback<Void> pCallback) {
 		new Thread(new Runnable(){
-			@Override
 			public void run() {
 				try{
 					upload(recordedGeoPoints, username, password, description, tags, addDateTags, pseudoFileName);

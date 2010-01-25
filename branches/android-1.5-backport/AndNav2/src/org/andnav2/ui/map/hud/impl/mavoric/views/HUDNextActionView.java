@@ -85,7 +85,6 @@ public class HUDNextActionView extends HUDBaseNextActionView {
 		pPaint.setTextScaleX(1.1f);
 	}
 
-	@Override
 	public void setNextActionOnClickListener(final OnClickListener pOnClickListener) {
 		this.setOnClickListener(pOnClickListener);
 	}

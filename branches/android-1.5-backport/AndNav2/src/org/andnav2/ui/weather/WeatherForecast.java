@@ -56,14 +56,12 @@ public class WeatherForecast extends Activity{
 		final String query = this.getIntent().getStringExtra(WEATHERQUERY_GEOPOINTSTRING_ID);
 
 		this.findViewById(R.id.weather_ok).setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View arg0) {
 				WeatherForecast.this.finish();
 			}
 		});
 
 		new Thread(new Runnable(){
-			@Override
 			public void run() {
 				WeatherForecast.this.kickOffWeatherQuery(query);
 			}
@@ -116,7 +114,6 @@ public class WeatherForecast extends Activity{
 			final WeatherSet ws = gwh.getWeatherSet();
 
 			runOnUiThread(new Runnable(){
-				@Override
 				public void run() {
 					/* Update the SingleWeatherInfoView with the parsed data. */
 					try {
@@ -162,7 +159,6 @@ public class WeatherForecast extends Activity{
 						updateWeatherInfoView(R.id.weather_4, ws.getWeatherForecastConditions().get(3));
 					} catch (final MalformedURLException e) {
 						runOnUiThread(new Runnable(){
-							@Override
 							public void run() {
 								resetWeatherInfoViews();
 								Log.e(Constants.DEBUGTAG, "WeatherQueryError", e);
@@ -174,7 +170,6 @@ public class WeatherForecast extends Activity{
 
 		} catch (final Exception e) {
 			runOnUiThread(new Runnable(){
-				@Override
 				public void run() {
 					resetWeatherInfoViews();
 					Toast.makeText(WeatherForecast.this, "Error", Toast.LENGTH_LONG).show();

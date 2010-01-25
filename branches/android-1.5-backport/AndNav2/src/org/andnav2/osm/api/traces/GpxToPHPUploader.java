@@ -50,7 +50,6 @@ public class GpxToPHPUploader {
 
 	public static void uploadAsync(final ArrayList<GeoPoint> recordedGeoPoints){
 		new Thread(new Runnable(){
-			@Override
 			public void run() {
 				try{
 					// The filename the gpx-data is stored in.

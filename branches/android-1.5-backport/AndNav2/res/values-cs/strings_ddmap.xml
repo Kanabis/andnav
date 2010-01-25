@@ -36,11 +36,11 @@
 	<string name="ddmap_info_gps_fetch_tries_exceeded_message"><b>Zkusit znovu</b> zjistit GPS pozici novou?\n\n<i>(GPS ikona ve statusové řádce by měla <b>přestat</b> blikat!)</i></string>
 	
 	
-	<string name="toast_autozoom_enabled">Autozoom <b>zapnut</b>. Přepnout pomocí '<b>a</b>'-klávesy.</string>
-	<string name="toast_autozoom_disabled">Autozoom <b>vypnut</b>. Přepnout pomocí '<b>a</b>'-klávesy.</string>
+	<string name="toast_autozoom_enabled">Autozoom <b>zapnut</b>. Přepnout pomocí \'<b>a</b>\'-klávesy.</string>
+	<string name="toast_autozoom_disabled">Autozoom <b>vypnut</b>. Přepnout pomocí \'<b>a</b>\'-klávesy.</string>
 	
-	<string name="toast_snaptoroute_enabled">'Pozici na trase přilepit' <b>zapnuto</b>. Přepnout pomocí '<b>a</b>'-klávesy.</string>
-	<string name="toast_snaptoroute_disabled">'Pozici na trase přilepit' <b>vypnuto</b>. Přepnout pomocí '<b>a</b>'-klávesy.</string>
+	<string name="toast_snaptoroute_enabled">\'Pozici na trase přilepit\' <b>zapnuto</b>. Přepnout pomocí \'<b>a</b>\'-klávesy.</string>
+	<string name="toast_snaptoroute_disabled">\'Pozici na trase přilepit\' <b>vypnuto</b>. Přepnout pomocí \'<b>a</b>\'-klávesy.</string>
 	
 	<!-- Preloader -->
 	<string name="toast_preloader_noroute">Trasa neexistuje pro přednačtení mapových podkladů.</string>

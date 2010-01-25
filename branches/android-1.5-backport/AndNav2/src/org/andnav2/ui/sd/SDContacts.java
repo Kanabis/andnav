@@ -109,7 +109,6 @@ public class SDContacts extends AndNavBaseActivity{
 							null);
 					if(addrCursor == null){
 						runOnUiThread(new Runnable(){
-							@Override
 							public void run() {
 								Toast.makeText(SDContacts.this, "Problem loading contacts. Please retry.", Toast.LENGTH_LONG).show(); // TODO i18n
 							}
@@ -232,7 +231,6 @@ public class SDContacts extends AndNavBaseActivity{
 
 	protected void initListView() {
 		this.mContactsList.setOnItemClickListener(new OnItemClickListener(){
-			@Override
 			public void onItemClick(final AdapterView<?> parent, final View v, final int position, final long id) {
 				final ContactItem c = (ContactItem)parent.getAdapter().getItem(position);
 
@@ -399,7 +397,6 @@ public class SDContacts extends AndNavBaseActivity{
 			this.mAddressDescription = pAddressDescrption;
 		}
 
-		@Override
 		public int compareTo(final ContactItem another) {
 			return this.mName.compareToIgnoreCase(another.mName);
 		}
@@ -418,12 +415,10 @@ public class SDContacts extends AndNavBaseActivity{
 			}
 		};
 
-		@Override
 		public int describeContents() {
 			return 0;
 		}
 
-		@Override
 		public void writeToParcel(final Parcel out, final int flags) {
 			out.writeString(this.mName);
 			out.writeString(this.mAddressDescription);
@@ -493,10 +488,8 @@ public class SDContacts extends AndNavBaseActivity{
 
 		public Object getItem(final int position) { return this.mItems.get(position); }
 
-		@Override
 		public long getItemId(final int position) { return position; }
 
-		@Override
 		public View getView(final int position, final View convertView, final ViewGroup parent) {
 			POIListItemView btv;
 			if (convertView == null) {
@@ -514,7 +507,6 @@ public class SDContacts extends AndNavBaseActivity{
 		// FastScrollView-Methods
 		// ===========================================================
 
-		@Override
 		public int getPositionForSection(final int section) {
 
 			final String firstChar = this.mAlphabet[section];
@@ -531,12 +523,10 @@ public class SDContacts extends AndNavBaseActivity{
 			return position;
 		}
 
-		@Override
 		public int getSectionForPosition(final int position) {
 			return 0;
 		}
 
-		@Override
 		public Object[] getSections() {
 			return this.mAlphabet;
 		}

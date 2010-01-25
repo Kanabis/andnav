@@ -79,14 +79,12 @@ public class AndNavBaseActivity extends Activity implements DataStateChangedList
 		super.onPause();
 	}
 
-	@Override
 	public void onPauseForDataStateChangedListener() {
 		if(this.mNeedDataState) {
 			this.mDscw.unregister();
 		}
 	}
 
-	@Override
 	public void onResumeForDataStateChangedListener() {
 		/** Initiates the local field <code>dsir</code> a
 		 * DataStateChangedWatcher to notify this class
@@ -94,7 +92,6 @@ public class AndNavBaseActivity extends Activity implements DataStateChangedList
 		this.mDscw = new MyDataStateChangedWatcher(this, this);
 	}
 
-	@Override
 	public void onDataStateChanged(final int aStrength) {
 		if(this.mNeedDataState) {
 			this.mDataConnectionStrength = aStrength;

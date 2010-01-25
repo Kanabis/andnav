@@ -138,7 +138,6 @@ public class SDPOISearchList extends AndNavGPSActivity {
 
 	protected void initListViewListener() {
 		this.mFoundPOIList.setOnItemClickListener(new OnItemClickListener(){
-			@Override
 			public void onItemClick(final AdapterView<?> parent, final View v, final int position, final long id) {
 				final POIItem p = (POIItem)parent.getAdapter().getItem(position);
 
@@ -248,7 +247,6 @@ public class SDPOISearchList extends AndNavGPSActivity {
 					if(!ensureLocationExists()){
 						Toast.makeText(SDPOISearchList.this, R.string.location_could_not_be_resolved , Toast.LENGTH_LONG).show();
 						runOnUiThread(new Runnable(){
-							@Override
 							public void run() {
 								pd.dismiss();
 							}
@@ -268,7 +266,6 @@ public class SDPOISearchList extends AndNavGPSActivity {
 					}
 
 					runOnUiThread(new Runnable(){
-						@Override
 						public void run() {
 							pd.dismiss();
 							if(SDPOISearchList.this.mResolvedItems.size() == 0){
@@ -287,7 +284,6 @@ public class SDPOISearchList extends AndNavGPSActivity {
 					SDPOISearchList.this.mResolvingFinished = true;
 				} catch (final Exception e) {
 					runOnUiThread(new Runnable(){
-						@Override
 						public void run() {
 							pd.dismiss();
 							// TODO GLobal beachten!
@@ -316,7 +312,6 @@ public class SDPOISearchList extends AndNavGPSActivity {
 
 
 		pd.setOnCancelListener(new OnCancelListener(){
-			@Override
 			public void onCancel(final DialogInterface d) {
 				d.dismiss();
 				if(ut != null) {
@@ -346,7 +341,6 @@ public class SDPOISearchList extends AndNavGPSActivity {
 				try {
 					if(!ensureLocationExists()){
 						runOnUiThread(new Runnable(){
-							@Override
 							public void run() {
 								Toast.makeText(SDPOISearchList.this, R.string.location_could_not_be_resolved , Toast.LENGTH_LONG).show();
 							}
@@ -362,7 +356,6 @@ public class SDPOISearchList extends AndNavGPSActivity {
 					ret = LUSRequester.requestFreeformAddress(SDPOISearchList.this, null, query);
 
 					runOnUiThread(new Runnable(){
-						@Override
 						public void run() {
 							pd.dismiss();
 							if(ret == null || ret.size() == 0){
@@ -404,7 +397,6 @@ public class SDPOISearchList extends AndNavGPSActivity {
 
 				} catch (final ORSException e) {
 					runOnUiThread(new Runnable(){
-						@Override
 						public void run() {
 							pd.dismiss();
 							Toast.makeText(SDPOISearchList.this, e.getErrors().get(0).toUserString(), Toast.LENGTH_SHORT).show();
@@ -413,7 +405,6 @@ public class SDPOISearchList extends AndNavGPSActivity {
 					//					Log.e(DEBUGTAG, "GeocodeError", e);
 				} catch (final Exception e) {
 					runOnUiThread(new Runnable(){
-						@Override
 						public void run() {
 							pd.dismiss();
 							Toast.makeText(SDPOISearchList.this, R.string.whereami_search_no_places_found, Toast.LENGTH_SHORT).show(); // TODO Wrong String?
@@ -437,7 +428,6 @@ public class SDPOISearchList extends AndNavGPSActivity {
 		};
 
 		pd.setOnCancelListener(new OnCancelListener(){
-			@Override
 			public void onCancel(final DialogInterface d) {
 				d.dismiss();
 				if(ut != null) {
@@ -519,7 +509,6 @@ public class SDPOISearchList extends AndNavGPSActivity {
 			this.mDistanceToUserLocationTextual = distString;
 		}
 
-		@Override
 		public int compareTo(final POIItem another) {
 			return this.mDistanceToUserLocation - another.mDistanceToUserLocation;
 		}
@@ -621,10 +610,8 @@ public class SDPOISearchList extends AndNavGPSActivity {
 
 		public Object getItem(final int position) { return this.mItems.get(position); }
 
-		@Override
 		public long getItemId(final int position) { return position; }
 
-		@Override
 		public View getView(final int position, final View convertView, final ViewGroup parent) {
 			POIListItemView btv;
 			if (convertView == null) {

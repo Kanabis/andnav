@@ -64,19 +64,16 @@ public class Donate extends AndNavBaseActivity {
 		final Spinner spinCurrencyOnce = (Spinner)this.findViewById(R.id.spin_donate_once_currency);
 		spinCurrencyOnce.setAdapter(currencies);
 		spinCurrencyOnce.setOnItemSelectedListener(new OnItemSelectedListener(){
-			@Override
 			public void onItemSelected(final AdapterView<?> parent, final View view, final int position, final long id){
 				final DonationCurrency c = currencies.getItem(position);
 				tvCurrencySymbolOnce.setText(c.SYMBOL);
 			}
 
-			@Override
 			public void onNothingSelected(final AdapterView<?> arg0) { }
 		});
 
 		final ImageButton ibtnDonateOnce = (ImageButton)this.findViewById(R.id.ibtn_donate_once);
 		ibtnDonateOnce.setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View arg0) {
 				if(etAmountOnce.getText().toString().length() == 0){
 
@@ -148,13 +145,11 @@ public class Donate extends AndNavBaseActivity {
 		final Spinner spinCurrencyRecurring = (Spinner)this.findViewById(R.id.spin_donate_recurring_currency);
 		spinCurrencyRecurring.setAdapter(currencies);
 		spinCurrencyRecurring.setOnItemSelectedListener(new OnItemSelectedListener(){
-			@Override
 			public void onItemSelected(final AdapterView<?> parent, final View view, final int position, final long id){
 				final DonationCurrency c = currencies.getItem(position);
 				tvCurrencySymbolRecurring.setText(c.SYMBOL);
 			}
 
-			@Override
 			public void onNothingSelected(final AdapterView<?> arg0) { }
 		});
 
@@ -170,7 +165,6 @@ public class Donate extends AndNavBaseActivity {
 
 		final ImageButton ibtnDonateRecurring = (ImageButton)this.findViewById(R.id.ibtn_donate_recurring);
 		ibtnDonateRecurring.setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View arg0) {
 				if(etAmountRecurring.getText().toString().length() == 0){
 

@@ -285,7 +285,8 @@ public class OSMMapViewController {
 		// Fields
 		// ===========================================================
 
-		protected final int mSmoothness, mDuration;
+		protected final int mSmoothness;
+//		protected final int mDuration;
 		protected final int mTargetLatitudeE6, mTargetLongitudeE6;
 		protected boolean mDone = false;
 
@@ -297,15 +298,15 @@ public class OSMMapViewController {
 		// Constructors
 		// ===========================================================
 
-		public AbstractAnimationRunner(final OSMMapViewController openStreetMapViewController, final int aTargetLatitudeE6, final int aTargetLongitudeE6){
-			this(aTargetLatitudeE6, aTargetLongitudeE6, OSMMapViewController.ANIMATION_SMOOTHNESS_DEFAULT, OSMMapViewController.ANIMATION_DURATION_DEFAULT);
-		}
+//		public AbstractAnimationRunner(final OSMMapViewController openStreetMapViewController, final int aTargetLatitudeE6, final int aTargetLongitudeE6){
+//			this(aTargetLatitudeE6, aTargetLongitudeE6, OSMMapViewController.ANIMATION_SMOOTHNESS_DEFAULT, OSMMapViewController.ANIMATION_DURATION_DEFAULT);
+//		}
 
 		public AbstractAnimationRunner(final int aTargetLatitudeE6, final int aTargetLongitudeE6, final int aSmoothness, final int aDuration){
 			this.mTargetLatitudeE6 = aTargetLatitudeE6;
 			this.mTargetLongitudeE6 = aTargetLongitudeE6;
 			this.mSmoothness = aSmoothness;
-			this.mDuration = aDuration;
+//			this.mDuration = aDuration;
 
 			this.mStepDuration = aDuration / aSmoothness;
 
@@ -344,9 +345,9 @@ public class OSMMapViewController {
 		// Constructors
 		// ===========================================================
 
-		public LinearAnimationRunner(final int aTargetLatitudeE6, final int aTargetLongitudeE6){
-			this(aTargetLatitudeE6, aTargetLongitudeE6, ANIMATION_SMOOTHNESS_DEFAULT, ANIMATION_DURATION_DEFAULT);
-		}
+//		public LinearAnimationRunner(final int aTargetLatitudeE6, final int aTargetLongitudeE6){
+//			this(aTargetLatitudeE6, aTargetLongitudeE6, ANIMATION_SMOOTHNESS_DEFAULT, ANIMATION_DURATION_DEFAULT);
+//		}
 
 		public LinearAnimationRunner(final int aTargetLatitudeE6, final int aTargetLongitudeE6, final int aSmoothness, final int aDuration){
 			super(aTargetLatitudeE6, aTargetLongitudeE6, aSmoothness, aDuration);
@@ -401,9 +402,9 @@ public class OSMMapViewController {
 		// Constructors
 		// ===========================================================
 
-		public ExponentialDeceleratingAnimationRunner(final int aTargetLatitudeE6, final int aTargetLongitudeE6){
-			this(aTargetLatitudeE6, aTargetLongitudeE6, ANIMATION_SMOOTHNESS_DEFAULT, ANIMATION_DURATION_DEFAULT);
-		}
+//		public ExponentialDeceleratingAnimationRunner(final int aTargetLatitudeE6, final int aTargetLongitudeE6){
+//			this(aTargetLatitudeE6, aTargetLongitudeE6, ANIMATION_SMOOTHNESS_DEFAULT, ANIMATION_DURATION_DEFAULT);
+//		}
 
 		public ExponentialDeceleratingAnimationRunner(final int aTargetLatitudeE6, final int aTargetLongitudeE6, final int aSmoothness, final int aDuration){
 			super(aTargetLatitudeE6, aTargetLongitudeE6, aSmoothness, aDuration);
@@ -448,20 +449,21 @@ public class OSMMapViewController {
 		// ===========================================================
 
 		protected final float mStepIncrement, mAmountStretch;
-		protected final float mYOffset, mRange, mStart;
+		protected final float mYOffset, mStart;
+//		protected final float mRange;
 
 		// ===========================================================
 		// Constructors
 		// ===========================================================
 
-		public CosinusalBasedAnimationRunner(final int aTargetLatitudeE6, final int aTargetLongitudeE6, final float aStart, final float aRange, final float aYOffset){
-			this(aTargetLatitudeE6, aTargetLongitudeE6, ANIMATION_SMOOTHNESS_DEFAULT, ANIMATION_DURATION_DEFAULT, aStart, aRange, aYOffset);
-		}
+//		public CosinusalBasedAnimationRunner(final int aTargetLatitudeE6, final int aTargetLongitudeE6, final float aStart, final float aRange, final float aYOffset){
+//			this(aTargetLatitudeE6, aTargetLongitudeE6, ANIMATION_SMOOTHNESS_DEFAULT, ANIMATION_DURATION_DEFAULT, aStart, aRange, aYOffset);
+//		}
 
 		public CosinusalBasedAnimationRunner(final int aTargetLatitudeE6, final int aTargetLongitudeE6, final int aSmoothness, final int aDuration, final float aStart, final float aRange, final float aYOffset){
 			super(aTargetLatitudeE6, aTargetLongitudeE6, aSmoothness, aDuration);
 			this.mYOffset = aYOffset;
-			this.mRange = aRange;
+//			this.mRange = aRange;
 			this.mStart = aStart;
 
 			this.mStepIncrement =  aRange / aSmoothness;

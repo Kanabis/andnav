@@ -48,7 +48,6 @@ public class CompassImageView extends ImageView implements SensorListener, Const
 	// Methods from SuperClass/Interfaces
 	// ===========================================================
 
-	@Override
 	public void onSensorChanged(final int sensor, final float[] values) {
 		this.mRotationDegree = -values[0];
 		if(this.getVisibility() == View.VISIBLE) {
@@ -73,7 +72,6 @@ public class CompassImageView extends ImageView implements SensorListener, Const
 		}
 	}
 
-	@Override
 	public void onAccuracyChanged(final int arg0, final int arg1) {
 		// TODO ...
 	}

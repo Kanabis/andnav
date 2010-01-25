@@ -47,22 +47,18 @@ public class NumberPadAdapter extends BaseAdapter {
 	// Methods from SuperClass/Interfaces
 	// ===========================================================
 
-	@Override
 	public int getCount() {
 		return 12; // 12 = {9-0 + Spacer + "OK"}
 	}
 
-	@Override
 	public Object getItem(final int position) {
 		return position;
 	}
 
-	@Override
 	public long getItemId(final int position) {
 		return position;
 	}
 
-	@Override
 	public View getView(final int position, final View convertView, final ViewGroup parent) {
 		final Button b = new Button(this.mContext);
 

@@ -31,12 +31,10 @@ public class TrafficItem implements IGeoPoint {
 	// Getter & Setter
 	// ===========================================================
 
-	@Override
 	public double getLatitudeAsDouble() {
 		return this.mGeoPoint.getLatitudeAsDouble();
 	}
 
-	@Override
 	public double getLongitudeAsDouble() {
 		return this.mGeoPoint.getLongitudeAsDouble();
 	}
@@ -65,12 +63,10 @@ public class TrafficItem implements IGeoPoint {
 		this.mSeverity = severity;
 	}
 
-	@Override
 	public int getLatitudeE6() {
 		return this.getGeoPoint().getLatitudeE6();
 	}
 
-	@Override
 	public int getLongitudeE6() {
 		return this.getGeoPoint().getLongitudeE6();
 	}

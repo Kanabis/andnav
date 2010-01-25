@@ -60,7 +60,6 @@ public class BetaExpirationBlocker implements Constants{
 			.setIcon(R.drawable.information)
 			.setMessage("Sorry, but this version of AndNav2 has expired!\n\nCheck http://download.andnav.org for the latest version?\n")
 			.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener(){
-				@Override
 				public void onClick(final DialogInterface arg0, final int arg1) {
 					final Intent i = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("http://download.andnav.org"));
 					a.startActivity(i);
@@ -68,7 +67,6 @@ public class BetaExpirationBlocker implements Constants{
 				}
 			})
 			.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener(){
-				@Override
 				public void onClick(final DialogInterface arg0, final int arg1) {
 					a.finish();
 				}

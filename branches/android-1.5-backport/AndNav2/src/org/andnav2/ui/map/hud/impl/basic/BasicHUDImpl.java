@@ -38,7 +38,6 @@ public class BasicHUDImpl implements IHUDImpl {
 	// Constructors
 	// ===========================================================
 
-	@Override
 	public void init(final View pRootView) {
 		this.mHUDNextActionView = (HUDNextActionView) pRootView.findViewById(R.id.hud_ddmap_basic_nextaction);
 		this.mHUDUpperNextActionView = (HUDUpperNextActionView) pRootView.findViewById(R.id.hud_ddmap_basic_uppernextaction);
@@ -50,22 +49,18 @@ public class BasicHUDImpl implements IHUDImpl {
 	// Getter & Setter
 	// ===========================================================
 
-	@Override
 	public IHUDTurnDescriptionView getTurnTurnDescriptionView() {
 		return this.mHUDTurnDescriptionView;
 	}
 
-	@Override
 	public IHUDNextActionView getNextActionView() {
 		return this.mHUDNextActionView;
 	}
 
-	@Override
 	public IHUDNextActionView getUpperNextActionView() {
 		return this.mHUDUpperNextActionView;
 	}
 
-	@Override
 	public IHUDRemainingSummaryView getRemainingSummaryView() {
 		return this.mHUDRemainingSummaryView;
 	}
@@ -74,44 +69,36 @@ public class BasicHUDImpl implements IHUDImpl {
 	// Methods from SuperClass/Interfaces
 	// ===========================================================
 
-	@Override
 	public int getID() {
 		return ID;
 	}
 
-	@Override
 	public IHUDImplVariation getVariation(final int pVariationID) {
 		return Util.getVariation(VARIATIONS, pVariationID);
 	}
 
-	@Override
 	public void setUpperNextActionViewNecessary(final boolean pNecessary) {
 		this.mHUDUpperNextActionView.setVisibility((pNecessary) ? View.VISIBLE : View.GONE);
 	}
 
-	@Override
 	public void invalidateViews() {
 		this.mHUDNextActionView.postInvalidate();
 		this.mHUDUpperNextActionView.postInvalidate();
 		this.mHUDRemainingSummaryView.postInvalidate();
 	}
 
-	@Override
 	public int getCountOfVariations() {
 		return VARIATIONS.length;
 	}
 
-	@Override
 	public int getNameResourceID() {
 		return R.string.hud_basic_name;
 	}
 
-	@Override
 	public int getDescriptionResourceID() {
 		return R.string.hud_basic_description;
 	}
 
-	@Override
 	public IHUDImplVariation[] getVariations() {
 		return VARIATIONS;
 	}
@@ -126,53 +113,43 @@ public class BasicHUDImpl implements IHUDImpl {
 
 	private static final IHUDImplVariation[] VARIATIONS = new IHUDImplVariation[]{
 		new IHUDImplVariation(){
-			@Override
 			public int getLayoutID() {
 				return  R.layout.ddmap_hud_basic_default;
 			}
 
-			@Override
 			public int getVariationID() {
 				return VARIATION_DEFAULT_ID;
 			}
 
-			@Override
 			public DirectionArrowDescriptor getDirectionArrowDescriptor() {
 				return new DirectionArrowDescriptor(new Point(20,20), R.drawable.hud_basic_variation_default_direction_arrow);
 			}
 
-			@Override
 			public int getDescriptionStringID() {
 				return R.string.hud_basic_variation_default;
 			}
 
-			@Override
 			public int getScreenshotResourceID() {
 				return R.drawable.hud_basic_variation_default_sample;
 			}
 		},
 		new IHUDImplVariation(){
-			@Override
 			public int getLayoutID() {
 				return  R.layout.ddmap_hud_basic_variation_1;
 			}
 
-			@Override
 			public int getVariationID() {
 				return VARIATION_DEFAULT_ID + 1;
 			}
 
-			@Override
 			public DirectionArrowDescriptor getDirectionArrowDescriptor() {
 				return new DirectionArrowDescriptor(new Point(24,30), R.drawable.hud_mavoric_variation_default_direction_arrow);
 			}
 
-			@Override
 			public int getDescriptionStringID() {
 				return R.string.hud_basic_variation_1;
 			}
 
-			@Override
 			public int getScreenshotResourceID() {
 				return R.drawable.hud_basic_variation_1_sample;
 			}

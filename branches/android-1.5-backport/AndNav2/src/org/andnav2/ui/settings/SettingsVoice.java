@@ -13,7 +13,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
+//FIXME import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -76,7 +76,7 @@ public class SettingsVoice extends AndNavBaseActivity {
 		switch(id){
 			case DIALOG_SHOWTTS:
 				return CommonDialogFactory.createTTSConfigOrTestDialog(SettingsVoice.this, new CommonCallbackAdapter<Integer>(){
-					private TextToSpeech mTTS;
+// FIXME 					private TextToSpeech mTTS;
 					private boolean mTTSAvailable = false;
 
 					@Override
@@ -89,20 +89,20 @@ public class SettingsVoice extends AndNavBaseActivity {
 								}
 								return;
 							case 1:
-								if(this.mTTS == null){
-									this.mTTS = new TextToSpeech(SettingsVoice.this, new TextToSpeech.OnInitListener(){
-										@Override
-										public void onInit(final int version) {
-											mTTSAvailable = true;
-											//										mTTS.setLanguage(Preferences.getDrivingDirectionsLanguage(SettingsVoice.this).getIETFLAnguageTag());
-											mTTS.speak(TEST_MESSAGE, 0, null);
-										}
-									});
-								}else{
-									if(this.mTTSAvailable) {
-										this.mTTS.speak(TEST_MESSAGE, 0, null);
-									}
-								}
+// FIXME 
+//								if(this.mTTS == null){
+//									this.mTTS = new TextToSpeech(SettingsVoice.this, new TextToSpeech.OnInitListener(){
+//										public void onInit(final int version) {
+//											mTTSAvailable = true;
+//											//										mTTS.setLanguage(Preferences.getDrivingDirectionsLanguage(SettingsVoice.this).getIETFLAnguageTag());
+//											mTTS.speak(TEST_MESSAGE, 0, null);
+//										}
+//									});
+//								}else{
+//									if(this.mTTSAvailable) {
+//										this.mTTS.speak(TEST_MESSAGE, 0, null);
+//									}
+//								}
 								return;
 						}
 					}
@@ -151,7 +151,6 @@ public class SettingsVoice extends AndNavBaseActivity {
 
 	private void applyCheckBoxListeners() {
 		this.chkMenuVoice.setOnCheckedChangeListener(new OnCheckedChangeListener(){
-			@Override
 			public void onCheckedChanged(final CompoundButton me, final boolean checked) {
 				SettingsVoice.super.mMenuVoiceEnabled = SettingsVoice.this.chkMenuVoice.isChecked();
 
@@ -162,7 +161,6 @@ public class SettingsVoice extends AndNavBaseActivity {
 			}
 		});
 		new OnClickOnFocusChangedListenerAdapter(this.chkMenuVoice){
-
 			@Override
 			public void onBoth(final View me, final boolean focused) {
 				SettingsVoice.this.tvQuickInfo.setText(R.string.tv_settings_voice_quickinfo_menuvoice_description);
@@ -170,7 +168,6 @@ public class SettingsVoice extends AndNavBaseActivity {
 		};
 
 		this.chkDirectionVoice.setOnCheckedChangeListener(new OnCheckedChangeListener(){
-			@Override
 			public void onCheckedChanged(final CompoundButton me, final boolean checked) {
 				if(SettingsVoice.super.mMenuVoiceEnabled) {
 					MediaPlayer.create(SettingsVoice.this, R.raw.save).start();

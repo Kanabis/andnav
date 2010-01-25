@@ -92,7 +92,6 @@ public class OSMMapTileDownloadProvider extends OSMAbstractMapTileProvider imple
 			this.mSaveableURLString = aSaveableURLString;
 		}
 
-		@Override
 		public void run() {
 			Process.setThreadPriority(Process.THREAD_PRIORITY_LESS_FAVORABLE);
 
@@ -143,7 +142,6 @@ public class OSMMapTileDownloadProvider extends OSMAbstractMapTileProvider imple
 			}
 		}
 
-		@Override
 		public int compareTo(final DownloadRunner another) {
 			return -(int)(this.mTimeStamp - another.mTimeStamp);
 		}

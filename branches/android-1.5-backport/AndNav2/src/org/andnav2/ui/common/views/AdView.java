@@ -62,7 +62,6 @@ public class AdView extends WebView {
 
 	public static void preloadAdAsync(final Context ctx){
 		new Thread(new Runnable(){
-			@Override
 			public void run() {
 				try {
 					if(!Preferences.getAdHtmlCode(ctx).equals(PreferenceConstants.PREF_ADHTMLCODE_DEFAULT)) {

@@ -25,7 +25,6 @@ public final class LexicographicalComparator implements Comparator<String> {
 	// Methods from SuperClass/Interfaces
 	// ===========================================================
 
-	@Override
 	public int compare(final String arg0, final String arg1) {
 		if(arg0 == null && arg1 == null) {
 			return 0;

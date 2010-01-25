@@ -38,22 +38,18 @@ public class OSMNode extends GeoPoint implements IOSMDataType {
 	// Methods from SuperClass/Interfaces
 	// ===========================================================
 
-	@Override
 	public boolean hasName() {
 		return this.mName != null && this.mName.length() > 0;
 	}
 
-	@Override
 	public boolean hasOSMID() {
 		return this.mOSMID != -1;
 	}
 
-	@Override
 	public long getOSMID() {
 		return this.mOSMID;
 	}
 
-	@Override
 	public String getName() {
 		return this.mName;
 	}

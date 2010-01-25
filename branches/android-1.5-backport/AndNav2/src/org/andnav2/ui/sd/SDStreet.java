@@ -226,7 +226,6 @@ public class SDStreet extends AndNavBaseActivity {
 						return out;
 					} catch (final ORSException e) {
 						runOnUiThread(new Runnable(){
-							@Override
 							public void run() {
 								Toast.makeText(SDStreet.this, e.getErrors().get(0).toUserString(), Toast.LENGTH_SHORT).show();
 							}
@@ -274,7 +273,6 @@ public class SDStreet extends AndNavBaseActivity {
 	 * which calls handleButtonClick(String caption).*/
 	protected void applyKeyPadGridOnItemClickListener() {
 		this.keyBoardGrid.setOnItemClickListener(new OnItemClickListener(){
-			@Override
 			public void onItemClick(final AdapterView<?> arg0, final View v, final int arg2, final long arg3) {
 				/* Extract the Caption of the Button. */
 				final String theCaption = ((Button)v).getText().toString();
@@ -296,7 +294,6 @@ public class SDStreet extends AndNavBaseActivity {
 
 	protected void applyTopMenuButtonListeners() {
 		this.streetNameEditText.setOnKeyListener(new OnKeyListener(){
-			@Override
 			public boolean onKey(final View arg0, final int arg1, final KeyEvent ke) {
 				if(ke.getAction() == KeyEvent.ACTION_DOWN){
 					if(ke.getKeyCode() == KeyEvent.KEYCODE_ENTER || ke.getKeyCode() == KeyEvent.KEYCODE_DPAD_CENTER){
@@ -371,7 +368,6 @@ public class SDStreet extends AndNavBaseActivity {
 	/** Apply OnItemClickListener to add the letter pressed to the EditText.
 	 * This Listener will get called on actual CLICKS to the BUTTONS! */
 	protected OnClickListener mGridButtonListener = new OnClickListener() {
-		@Override
 		public void onClick(final View v) {
 			/* Extract the Caption of the Button. */
 			final String theCaption = ((Button)v).getText().toString();
