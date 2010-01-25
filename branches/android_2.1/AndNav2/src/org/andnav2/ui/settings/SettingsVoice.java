@@ -91,7 +91,6 @@ public class SettingsVoice extends AndNavBaseActivity {
 							case 1:
 								if(this.mTTS == null){
 									this.mTTS = new TextToSpeech(SettingsVoice.this, new TextToSpeech.OnInitListener(){
-										@Override
 										public void onInit(final int version) {
 											mTTSAvailable = true;
 											//										mTTS.setLanguage(Preferences.getDrivingDirectionsLanguage(SettingsVoice.this).getIETFLAnguageTag());
@@ -151,7 +150,6 @@ public class SettingsVoice extends AndNavBaseActivity {
 
 	private void applyCheckBoxListeners() {
 		this.chkMenuVoice.setOnCheckedChangeListener(new OnCheckedChangeListener(){
-			@Override
 			public void onCheckedChanged(final CompoundButton me, final boolean checked) {
 				SettingsVoice.super.mMenuVoiceEnabled = SettingsVoice.this.chkMenuVoice.isChecked();
 
@@ -162,7 +160,6 @@ public class SettingsVoice extends AndNavBaseActivity {
 			}
 		});
 		new OnClickOnFocusChangedListenerAdapter(this.chkMenuVoice){
-
 			@Override
 			public void onBoth(final View me, final boolean focused) {
 				SettingsVoice.this.tvQuickInfo.setText(R.string.tv_settings_voice_quickinfo_menuvoice_description);
@@ -170,7 +167,6 @@ public class SettingsVoice extends AndNavBaseActivity {
 		};
 
 		this.chkDirectionVoice.setOnCheckedChangeListener(new OnCheckedChangeListener(){
-			@Override
 			public void onCheckedChanged(final CompoundButton me, final boolean checked) {
 				if(SettingsVoice.super.mMenuVoiceEnabled) {
 					MediaPlayer.create(SettingsVoice.this, R.raw.save).start();

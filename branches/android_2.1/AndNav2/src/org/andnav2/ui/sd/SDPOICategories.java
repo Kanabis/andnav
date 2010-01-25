@@ -62,7 +62,6 @@ public class SDPOICategories extends BasePOICategorySelectionActivity {
 	protected OnChildClickListener onCreateOnChildClickListener() {
 		return new OnChildClickListener(){
 			@SuppressWarnings("unchecked")
-			@Override
 			public boolean onChildClick(final ExpandableListView parent, final View v, final int groupPosition, final int childPosition, final long id) {
 				final HashMap<String, String> map = (HashMap<String, String>)SDPOICategories.this.mExpListAdapter.getChild(groupPosition, childPosition);
 				final String poiTypeRawName = map.get(KEY_SUBTYPERAWNAME);
@@ -103,7 +102,6 @@ public class SDPOICategories extends BasePOICategorySelectionActivity {
 				new AlertDialog.Builder(SDPOICategories.this)
 				.setTitle(R.string.choose_search_radius)
 				.setSingleChoiceItems(valStr, 3, new DialogInterface.OnClickListener(){
-					@Override
 					public void onClick(final DialogInterface d, final int which) {
 						d.dismiss();
 

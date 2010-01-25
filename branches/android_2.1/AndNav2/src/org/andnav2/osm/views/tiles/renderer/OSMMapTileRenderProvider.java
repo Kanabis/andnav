@@ -111,7 +111,6 @@ public class OSMMapTileRenderProvider extends OSMAbstractMapTileProvider impleme
 			this.mSaveableURLString = aSaveableURLString;
 		}
 
-		@Override
 		public void run() {
 			Process.setThreadPriority(Process.THREAD_PRIORITY_LESS_FAVORABLE);
 
@@ -151,7 +150,6 @@ public class OSMMapTileRenderProvider extends OSMAbstractMapTileProvider impleme
 			}
 		}
 
-		@Override
 		public int compareTo(final RenderRunner another) {
 			return -(int)(this.mTimeStamp - another.mTimeStamp);
 		}

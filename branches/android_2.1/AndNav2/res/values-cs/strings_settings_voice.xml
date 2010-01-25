@@ -27,8 +27,8 @@
 		<string name="dlg_settings_voice_tts_play_sample">Přehrát příklad</string>
 		
 	<string name="tts_not_installed_title">"'Text-To-Speech' ..."</string>
-	<string name="tts_not_installed_message"><b>VOLNÁ</b> 'Text-To-Speech' knihovna nebyla nalezena.\n\nChcete ji z <b>Android Marketu</b> stáhnout?</string>
-	<string name="tts_outdated_message"><b>VOLNÁ</b> 'Text-To-Speech' knihovna již není aktuální.\n\n<b>Doporučujeme</b> ji zaktualizovat!</string>
+	<string name="tts_not_installed_message"><b>VOLNÁ</b> \'Text-To-Speech\' knihovna nebyla nalezena.\n\nChcete ji z <b>Android Marketu</b> stáhnout?</string>
+	<string name="tts_outdated_message"><b>VOLNÁ</b> \'Text-To-Speech\' knihovna již není aktuální.\n\n<b>Doporučujeme</b> ji zaktualizovat!</string>
 			
 	<array name="spin_settings_directionvoice_saywhat_items">
 		<item>Nic</item>

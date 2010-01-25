@@ -116,7 +116,7 @@ public class OSBMap extends OpenStreetMapAndNavBaseActivity implements OnItemTap
 	private int mNewOSMPOINodeID = NOT_SET;
 
 	@Override
-	protected void onSetupContentView() {
+	public void onSetupContentView() {
 		this.setContentView(R.layout.osbmap);
 		super.mOSMapView = (OSMMapView)findViewById(R.id.map_osbmap);
 
@@ -156,10 +156,8 @@ public class OSBMap extends OpenStreetMapAndNavBaseActivity implements OnItemTap
 		applyMapViewLongPressListener();
 
 		this.mOSMapView.addChangeListener(new OnChangeListener(){
-			@Override
 			public void onChange() {
 				runOnUiThread(new Runnable(){
-					@Override
 					public void run() {
 						OSBMap.this.mScaleIndicatorView.refresh(OSBMap.this.mOSMapView);
 					}
@@ -255,7 +253,6 @@ public class OSBMap extends OpenStreetMapAndNavBaseActivity implements OnItemTap
 							final int assignedID = OSBRequester.submitBug(OSBMap.this.mOSMapView.getMapCenter(), result);
 							if(assignedID < 0){
 								runOnUiThread(new Runnable(){
-									@Override
 									public void run() {
 										Toast.makeText(OSBMap.this, R.string.dlg_osb_add_bug_error, Toast.LENGTH_LONG).show();
 									}
@@ -263,7 +260,6 @@ public class OSBMap extends OpenStreetMapAndNavBaseActivity implements OnItemTap
 								return;
 							}
 							runOnUiThread(new Runnable(){
-								@Override
 								public void run() {
 									showDialog(DIALOG_SHOW_OSB_BUG_REFRESH_AFTER_ADD);
 								}
@@ -285,7 +281,6 @@ public class OSBMap extends OpenStreetMapAndNavBaseActivity implements OnItemTap
 							boolean success = OSBRequester.appendToBug(pOSB, result.mCommentWithName);
 							if(!success){
 								runOnUiThread(new Runnable(){
-									@Override
 									public void run() {
 										Toast.makeText(OSBMap.this, R.string.dlg_osb_edit_bug_error_during_append, Toast.LENGTH_LONG).show();
 									}
@@ -297,7 +292,6 @@ public class OSBMap extends OpenStreetMapAndNavBaseActivity implements OnItemTap
 								success = OSBRequester.closeBug(pOSB);
 								if(!success){
 									runOnUiThread(new Runnable(){
-										@Override
 										public void run() {
 											Toast.makeText(OSBMap.this, R.string.dlg_osb_edit_bug_error_during_close, Toast.LENGTH_LONG).show();
 										}
@@ -306,7 +300,6 @@ public class OSBMap extends OpenStreetMapAndNavBaseActivity implements OnItemTap
 								}
 							}
 							runOnUiThread(new Runnable(){
-								@Override
 								public void run() {
 									showDialog(DIALOG_SHOW_OSB_BUG_REFRESH_AFTER_EDIT);
 								}
@@ -318,7 +311,6 @@ public class OSBMap extends OpenStreetMapAndNavBaseActivity implements OnItemTap
 				});
 			case DIALOG_INPUT_OSM_POI:
 				return CommonDialogFactory.createInputOSMPOIDialog(this, this.mAddOSMPOIType, new CommonCallback<String>(){
-					@Override
 					public void onSuccess(final String pResultName) {
 						// TODO Ensure mapcenter did not change
 						if(pResultName == null || pResultName.length() == 0){
@@ -351,7 +343,6 @@ public class OSBMap extends OpenStreetMapAndNavBaseActivity implements OnItemTap
 						}
 					}
 
-					@Override
 					public void onFailure(final Throwable t) {
 						showDialog(DIALOG_SHOW_OSM_POI_FAILED);
 					}
@@ -405,7 +396,6 @@ public class OSBMap extends OpenStreetMapAndNavBaseActivity implements OnItemTap
 	private void refreshVisibleBugs() {
 		Toast.makeText(OSBMap.this, R.string.please_wait_a_moment, Toast.LENGTH_SHORT).show();
 		new Thread(new Runnable(){
-			@Override
 			public void run() {
 				final BoundingBoxE6 drawnBoundingBoxE6 = OSBMap.super.mOSMapView.getDrawnBoundingBoxE6();
 				try {
@@ -419,14 +409,12 @@ public class OSBMap extends OpenStreetMapAndNavBaseActivity implements OnItemTap
 					}
 
 					runOnUiThread(new Runnable(){
-						@Override
 						public void run() {
 							OSBMap.super.mOSMapView.invalidate();
 						}
 					});
 				} catch (final OSBException e) {
 					runOnUiThread(new Runnable(){
-						@Override
 						public void run() {
 							Toast.makeText(OSBMap.this, R.string.toast_osbmap_refresh_error, Toast.LENGTH_SHORT).show();
 						}
@@ -559,8 +547,6 @@ public class OSBMap extends OpenStreetMapAndNavBaseActivity implements OnItemTap
 		return super.onMenuItemSelected(featureId, item);
 	}
 
-
-	@Override
 	public boolean onItemTap(final int index, final OSMMapViewOSBOverlayItem item) {
 		if(index >= this.mBugOverlayItems.size()) {
 			throw new IllegalArgumentException();
@@ -626,7 +612,6 @@ public class OSBMap extends OpenStreetMapAndNavBaseActivity implements OnItemTap
 			}
 		});
 		this.mOSMapView.setOnTouchListener(new OnTouchListener(){
-			@Override
 			public boolean onTouch(final View v, final MotionEvent ev) {
 				if(!OSBMap.this.mAddBugCrosshairMode){
 					return gd.onTouchEvent(ev);
@@ -639,28 +624,24 @@ public class OSBMap extends OpenStreetMapAndNavBaseActivity implements OnItemTap
 
 	protected void applyQuickButtonListeners(){
 		this.mIbtnCommentWrite.setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View v) {
 				showDialog(DIALOG_INPUT_EDIT_BUG);
 			}
 		});
 
 		this.mIbtnRefresh.setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View v) {
 				refreshVisibleBugs();
 			}
 		});
 
 		this.mIbtnAdd.setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View v) {
 				handleAddAction();
 			}
 		});
 
 		this.mIbtnAddCancel.setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View v) {
 				/* Toggle status */
 				OSBMap.this.mAddBugCrosshairMode = false;
@@ -686,7 +667,6 @@ public class OSBMap extends OpenStreetMapAndNavBaseActivity implements OnItemTap
 		.setView(fl)
 		.setTitle(R.string.dlg_osb_add_ftpc_title)
 		.setPositiveButton(R.string.save, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				final String mail = etMail.getText().toString();
 
@@ -710,20 +690,17 @@ public class OSBMap extends OpenStreetMapAndNavBaseActivity implements OnItemTap
 
 				Toast.makeText(OSBMap.this, R.string.please_wait_a_moment, Toast.LENGTH_LONG).show();
 				new Thread(new Runnable(){
-					@Override
 					public void run() {
 						try {
 							final boolean success = FTPCRequester.submitPostcode(OSBMap.this.mOSMapView.getMapCenter(), postcode1, postcode2, mail);
 							if(success){
 								runOnUiThread(new Runnable(){
-									@Override
 									public void run() {
 										Toast.makeText(OSBMap.this, R.string.dlg_osb_add_ftpc_success, Toast.LENGTH_LONG).show();
 									}
 								});
 							}else{
 								runOnUiThread(new Runnable(){
-									@Override
 									public void run() {
 										Toast.makeText(OSBMap.this, R.string.dlg_osb_add_ftpc_failed, Toast.LENGTH_LONG).show();
 									}
@@ -739,7 +716,6 @@ public class OSBMap extends OpenStreetMapAndNavBaseActivity implements OnItemTap
 			}
 		})
 		.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 			}
@@ -748,14 +724,12 @@ public class OSBMap extends OpenStreetMapAndNavBaseActivity implements OnItemTap
 
 	protected void applyZoomButtonListeners(){
 		this.findViewById(R.id.iv_osbmap_zoomin).setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View v) {
 				OSBMap.this.mOSMapView.zoomIn();
 				OSBMap.this.mOSMapView.invalidate();
 			}
 		});
 		this.findViewById(R.id.iv_osbmap_zoomout).setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View v) {
 				OSBMap.this.mOSMapView.zoomOut();
 				OSBMap.this.mOSMapView.invalidate();

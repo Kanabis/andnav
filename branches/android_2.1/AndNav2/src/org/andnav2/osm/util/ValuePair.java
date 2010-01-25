@@ -52,7 +52,6 @@ public class ValuePair implements Comparable<ValuePair>{
 		&& this.b == ((ValuePair)o).b;
 	}
 
-	@Override
 	public int compareTo(final ValuePair another) {
 		if(this.a != another.a) {
 			return this.a - another.a;

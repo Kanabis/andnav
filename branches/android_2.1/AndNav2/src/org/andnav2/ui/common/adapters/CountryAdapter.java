@@ -44,7 +44,6 @@ public class CountryAdapter extends BaseAdapter {
 	// Methods from SuperClass/Interfaces
 	// ===========================================================
 
-	@Override
 	public View getView(final int position, final View convertView, final ViewGroup parent) {
 		final View v;
 		if (convertView != null){
@@ -62,17 +61,14 @@ public class CountryAdapter extends BaseAdapter {
 		return v;
 	}
 
-	@Override
 	public final int getCount() {
 		return this.mNations.size();
 	}
 
-	@Override
 	public final Country getItem(final int position) {
 		return this.mNations.get(position);
 	}
 
-	@Override
 	public final long getItemId(final int position) {
 		return position;
 	}

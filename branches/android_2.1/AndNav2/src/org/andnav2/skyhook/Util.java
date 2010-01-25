@@ -41,7 +41,6 @@ public class Util {
 
 	public static void registerAndSaveNewSkyHookUserAsync(final Context ctx) {
 		new Thread(new Runnable(){
-			@Override
 			public void run() {
 				/* Retrieve the IMEI (Device-unique ID) to set up a username for SkyHook. */
 				final String imeiHashed = org.andnav2.util.Util.getDeviceIDHashed(ctx);
@@ -52,17 +51,14 @@ public class Util {
 
 
 				new WPS(ctx).registerUser(skyHookWPSRegistrationAuthentication, newUser, new RegistrationCallback(){
-					@Override
 					public void handleSuccess() {
 						Preferences.saveSkyHookWPSAuthentication(ctx, newUser);
 					}
 
-					@Override
 					public void done() {
 						// Nothing
 					}
 
-					@Override
 					public WPSContinuation handleError(final WPSReturnCode error) {
 						return WPSContinuation.WPS_STOP;
 					}

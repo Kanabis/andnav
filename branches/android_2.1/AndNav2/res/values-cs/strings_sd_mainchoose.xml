@@ -22,6 +22,6 @@
 	<string name="dlg_input_direct_lat_lon_title">Zadat souřadnice v decimálním formátu...</string>
 	<string name="dlg_input_direct_lat_lon_latitude">Zeměpisná šířka:</string>
 	<string name="dlg_input_direct_lat_lon_longitude">Zeměpisná délka:</string>
-	<string name="dlg_input_direct_lat_lon_example"><b>Příklad</b> (<i>New York</i>):\nŠ: '40.755962'\nD: '-73.986703'</string>
+	<string name="dlg_input_direct_lat_lon_example"><b>Příklad</b> (<i>New York</i>):\nŠ: \'40.755962\'\nD: \'-73.986703\'</string>
 	<string name="dlg_input_direct_lat_lon_malformed">Neplatná zeměpisná šířka nebo délka.</string>
 </resources>

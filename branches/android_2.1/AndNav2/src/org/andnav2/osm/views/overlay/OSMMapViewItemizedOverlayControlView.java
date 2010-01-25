@@ -82,7 +82,6 @@ public class OSMMapViewItemizedOverlayControlView extends LinearLayout{
 
 	private void initViewListeners(){
 		this.mIbtnNext.setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View v) {
 				if(OSMMapViewItemizedOverlayControlView.this.mLis != null) {
 					OSMMapViewItemizedOverlayControlView.this.mLis.onNext();
@@ -91,7 +90,6 @@ public class OSMMapViewItemizedOverlayControlView extends LinearLayout{
 		});
 
 		this.mIbtnPrevious.setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View v) {
 				if(OSMMapViewItemizedOverlayControlView.this.mLis != null) {
 					OSMMapViewItemizedOverlayControlView.this.mLis.onPrevious();
@@ -100,7 +98,6 @@ public class OSMMapViewItemizedOverlayControlView extends LinearLayout{
 		});
 
 		this.mIbtnCenterTo.setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View v) {
 				if(OSMMapViewItemizedOverlayControlView.this.mLis != null) {
 					OSMMapViewItemizedOverlayControlView.this.mLis.onCenter();
@@ -109,7 +106,6 @@ public class OSMMapViewItemizedOverlayControlView extends LinearLayout{
 		});
 
 		this.mIbtnNavTo.setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View v) {
 				if(OSMMapViewItemizedOverlayControlView.this.mLis != null) {
 					OSMMapViewItemizedOverlayControlView.this.mLis.onNavTo();

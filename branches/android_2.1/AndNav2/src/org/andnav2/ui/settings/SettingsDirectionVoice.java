@@ -96,7 +96,6 @@ public class SettingsDirectionVoice extends AndNavBaseActivity {
 			public void onClicked(final View me) {
 				if(this.mTTS == null){
 					this.mTTS = new TextToSpeech(SettingsDirectionVoice.this, new TextToSpeech.OnInitListener(){
-						@Override
 						public void onInit(final int version) {
 							mTTSAvailable = true;
 							//							mTTS.setLanguage(Preferences.getDrivingDirectionsLanguage(SettingsDirectionVoice.this).getIETFLAnguageTag());

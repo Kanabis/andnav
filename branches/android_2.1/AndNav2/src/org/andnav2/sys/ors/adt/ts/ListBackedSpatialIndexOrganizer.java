@@ -68,17 +68,14 @@ public class ListBackedSpatialIndexOrganizer<T extends IGeoPoint> implements ISp
 	// Getter & Setter
 	// ===========================================================
 
-	@Override
 	public boolean isIndexBuilt() {
 		return this.mIndexBuilt;
 	}
 
-	@Override
 	public List<T> getItems() {
 		return this.mFeatureList;
 	}
 
-	@Override
 	public void add(final T pItem) {
 		if(this.mIndexBuilt) {
 			throw new IllegalStateException("Trying to add after index was built.");
@@ -89,7 +86,6 @@ public class ListBackedSpatialIndexOrganizer<T extends IGeoPoint> implements ISp
 		}
 	}
 
-	@Override
 	public void addAll(final Collection<T> pItems){
 		if(this.mIndexBuilt) {
 			throw new IllegalStateException("Trying to add after index was built.");
@@ -104,13 +100,11 @@ public class ListBackedSpatialIndexOrganizer<T extends IGeoPoint> implements ISp
 	// Methods from SuperClass/Interfaces
 	// ===========================================================
 
-	@Override
 	public void clearIndex(){
 		this.mIndexBuilt = false;
 		this.mFeatureList.clear();
 	}
 
-	@Override
 	public void buildIndex(){
 		this.mIndexBuilt = true;
 
@@ -125,7 +119,6 @@ public class ListBackedSpatialIndexOrganizer<T extends IGeoPoint> implements ISp
 		}
 	}
 
-	@Override
 	public List<T> getClosest(final IGeoPoint pGeoPoint, final int pCount){
 		if(!this.mIndexBuilt) {
 			throw new IllegalStateException("Trying to query before index was built.");
@@ -136,12 +129,10 @@ public class ListBackedSpatialIndexOrganizer<T extends IGeoPoint> implements ISp
 		final double[] pointCoords = new double[]{pGeoPoint.getLatitudeAsDouble(), pGeoPoint.getLongitudeAsDouble()};
 		this.mSpatialIndex.nearestNeighborQuery(pCount, new Point(pointCoords ), new IVisitor(){
 
-			@Override
 			public void visitData(final IData d) {
 				out.add(ListBackedSpatialIndexOrganizer.this.mFeatureList.get(d.getIdentifier()));
 			}
 
-			@Override
 			public void visitNode(final INode n) { }
 
 		});
@@ -149,12 +140,10 @@ public class ListBackedSpatialIndexOrganizer<T extends IGeoPoint> implements ISp
 		return out;
 	}
 
-	@Override
 	public List<T> getWithinBoundingBox(final BoundingBoxE6 boundingBoxE6, final int count) {
 		throw new IllegalStateException("Wrong method!");
 	}
 
-	@Override
 	public GetMode getGetMode() {
 		return GetMode.CLOSEST;
 	}

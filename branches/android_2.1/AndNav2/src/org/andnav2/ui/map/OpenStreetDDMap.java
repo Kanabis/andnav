@@ -276,7 +276,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 	private PowerManager.WakeLock mWakeLock;
 
 	private final TextToSpeech.OnInitListener mTTSInitListener = new TextToSpeech.OnInitListener() {
-		@Override
 		public void onInit(final int version) {
 //			OpenStreetDDMap.this.mTTS.setLanguage(Locale.US);
 //			OpenStreetDDMap.this.mTTS.setSpeechRate(130);
@@ -288,7 +287,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 
 	private final Runnable mRefetchRunner = new Runnable() {
 
-		@Override
 		public void run() {
 			if (OpenStreetDDMap.this.mDoAutomaticRouteRefetch){
 				/* Check if still true (route was not resumed in between). */
@@ -369,10 +367,8 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 		this.mScaleIndicatorView.setUnitSystem(Preferences.getUnitSystem(this));
 
 		this.mOSMapView.addChangeListener(new OnChangeListener(){
-			@Override
 			public void onChange() {
 				runOnUiThread(new Runnable(){
-					@Override
 					public void run() {
 						OpenStreetDDMap.this.mScaleIndicatorView.refresh(OpenStreetDDMap.this.mOSMapView);
 					}
@@ -423,7 +419,7 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 	}
 
 	@Override
-	protected void onSetupContentView() {
+	public void onSetupContentView() {
 		this.mHUDImpl = Preferences.getHUDImpl(this);
 		final int variationID = Preferences.getHUDImplVariationID(this);
 		this.setContentView(this.mHUDImpl.getVariation(variationID).getLayoutID());
@@ -523,14 +519,12 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 		switch(id){
 			case DIALOG_SHOW_ALTITUDE_PROFILE:
 				return CommonDialogFactory.createAltitudeProfileDialog(this, new CommonCallback<Void>(){
-					@Override
 					public void onSuccess(final Void result) {
 						if(OpenStreetDDMap.this.mCurrentAltitudeProfileBitmap != null) {
 							OpenStreetDDMap.this.mCurrentAltitudeProfileBitmap.recycle();
 						}
 					}
 
-					@Override
 					public void onFailure(final Throwable t) {
 						if(OpenStreetDDMap.this.mCurrentAltitudeProfileBitmap != null) {
 							OpenStreetDDMap.this.mCurrentAltitudeProfileBitmap.recycle();
@@ -891,18 +885,15 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 		.setTitle(R.string.dlg_preloader_title)
 		.setMessage(String.format(getString(R.string.dlg_preloader_message), tilesNeeded.length , formattedFileSize))
 		.setNeutralButton(R.string.btn_settings_cache_clear_cache_caption, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				final ProgressDialog pd = ProgressDialog.show(OpenStreetDDMap.this,
 						getString(R.string.pdg_settings_cache_clear_cache_title),
 						getString(R.string.pdg_settings_cache_clear_cache_message), true, true);
 				new Thread(new Runnable(){
-					@Override
 					public void run() {
 						/* Clear FileSystem-Cache. */
 						pTileProvider.getFileSystemCache().clearCurrentFSCache();
 						runOnUiThread(new Runnable(){
-							@Override
 							public void run() {
 								pd.dismiss();
 							}
@@ -912,19 +903,16 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 			}
 		})
 		.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				final String progressMessage = getString(R.string.pdg_preloader_message);
 				final ProgressDialog pd = ProgressDialog.show(OpenStreetDDMap.this, getString(R.string.pdg_preloader_title), String.format(progressMessage,0,tilesNeeded.length), true, true);
 				new Thread(new Runnable(){
-					@Override
 					public void run() {
 						final OSMMapTileFilesystemCache fsProvider = pTileProvider.getFileSystemCache();
 						if(fsProvider.getMaxFSCacheByteSize() < bytesEpectedNeeded){
 							final int newCacheByteSize = (int)(bytesEpectedNeeded * 1.1f);
 
 							runOnUiThread(new Runnable(){
-								@Override
 								public void run() {
 									pd.setMessage(getString(R.string.pdg_settings_cache_clear_cache_title));
 									Toast.makeText(OpenStreetDDMap.this, String.format(getString(R.string.toast_preloader_cache_increased_message), FileSizeFormatter.formatFileSize(newCacheByteSize)), Toast.LENGTH_LONG).show();
@@ -940,7 +928,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 							final int fsCacheBytesFree = fsProvider.getMaxFSCacheByteSize() - fsProvider.getCurrentFSCacheByteSize();
 							if(bytesEpectedNeeded > fsCacheBytesFree * 0.9f){ // 10% margin
 								runOnUiThread(new Runnable(){
-									@Override
 									public void run() {
 										pd.setMessage(getString(R.string.pdg_settings_cache_clear_cache_title));
 									}
@@ -950,14 +937,12 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 						}
 
 						runOnUiThread(new Runnable(){
-							@Override
 							public void run() {
 								new OSMMapTilePreloader().loadAllToCacheAsync(tilesNeeded,
 										zoomLevel,
 										rendererInfo,
 										pTileProvider,
 										new OnProgressChangeListener(){
-									@Override
 									public void onProgressChange(final int progress, final int max) {
 										if(progress != max) {
 											pd.setMessage(String.format(progressMessage, progress, max));
@@ -980,7 +965,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 			}
 		})
 		.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 			}
@@ -1078,7 +1062,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 		}
 	}
 
-	@Override
 	public void onRouteResumed() {
 		if(!this.mRealtimeNav) {
 			return;
@@ -1095,7 +1078,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 		this.mRouteRefetchRunning = false;
 
 		runOnUiThread(new Runnable(){
-			@Override
 			public void run() {
 				if (OpenStreetDDMap.this.mDirectionVoiceEnabled) {
 					OpenStreetDDMap.this.mSoundManager.playSound(R.raw.route_resumed);
@@ -1107,7 +1089,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 
 	}
 
-	@Override
 	public void onRouteMissed() {
 		if(!this.mRealtimeNav) {
 			return;
@@ -1116,7 +1097,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 		this.mOnRouteStatus = OFF_ROUTE;
 
 		runOnUiThread(new Runnable(){
-			@Override
 			public void run() {
 				if (OpenStreetDDMap.this.mDirectionVoiceEnabled) {
 					OpenStreetDDMap.this.mSoundManager.playSound(R.raw.route_missed);
@@ -1136,14 +1116,12 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 		}
 	}
 
-	@Override
 	public void onTargetReached() {
 		if(!this.mRealtimeNav) {
 			return;
 		}
 
 		runOnUiThread(new Runnable() {
-			@Override
 			public void run() {
 				if(OpenStreetDDMap.this.mDirectionVoiceEnabled) {
 					OpenStreetDDMap.this.mSoundManager.playSound(R.raw.target_reached);
@@ -1154,7 +1132,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 		});
 	}
 
-	@Override
 	public void onWaypointPassed(final List<GeoPoint> waypointsLeft) {
 		if(!this.mRealtimeNav) {
 			return;
@@ -1167,7 +1144,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 		}
 
 		runOnUiThread(new Runnable() {
-			@Override
 			public void run() {
 				if(OpenStreetDDMap.this.mDirectionVoiceEnabled) {
 					OpenStreetDDMap.this.mSoundManager.playSound(R.raw.waypoint_passed);
@@ -1178,7 +1154,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 		});
 	}
 
-	@Override
 	public void onReceiveAudibleTurnCommand(final AudibleTurnCommand pATC) {
 		if(!this.mRealtimeNav) {
 			return;
@@ -1195,7 +1170,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 		final UnitSystem us = Preferences.getUnitSystem(this);
 
 		runOnUiThread(new Runnable() {
-			@Override
 			public void run() {
 				final DistanceVoiceElement dve = pATC.getDistanceVoiceElement();
 				final TurnVoiceElement tve = pATC.getTurnVoiceElement();
@@ -1679,7 +1653,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 
 	private void applyViewListeners() {
 		this.findViewById(R.id.iv_ddmap_zoomin).setOnClickListener(new OnClickListener() {
-			@Override
 			public void onClick(final View v) {
 				OpenStreetDDMap.super.mOSMapView.zoomIn();
 				OpenStreetDDMap.super.mOSMapView.invalidate();
@@ -1687,7 +1660,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 			}
 		});
 		this.findViewById(R.id.iv_ddmap_zoomout).setOnClickListener(new OnClickListener() {
-			@Override
 			public void onClick(final View v) {
 				OpenStreetDDMap.super.mOSMapView.zoomOut();
 				OpenStreetDDMap.super.mOSMapView.invalidate();
@@ -1696,14 +1668,12 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 		});
 
 		this.mHUDImpl.getRemainingSummaryView().setRemainingSummaryOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View v) {
 				OpenStreetDDMap.this.mHUDImpl.getRemainingSummaryView().onClick();
 			}
 		});
 
 		final OnClickListener speakTurnOnClickListener = new OnClickListener(){
-			@Override
 			public void onClick(final View v) {
 				speakTurn();
 			}
@@ -1755,8 +1725,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 						getString(R.string.ddmap_contextmenu_exit)};
 				new AlertDialog.Builder(OpenStreetDDMap.this)
 				.setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener(){
-
-					@Override
 					public void onClick(final DialogInterface d, final int which) {
 						d.dismiss();
 						switch(which){
@@ -1793,7 +1761,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 								new AlertDialog.Builder(OpenStreetDDMap.this)
 								.setTitle(R.string.ddmap_contextmenu_clear_avoidareas_radius_title)
 								.setSingleChoiceItems(valStr, 0, new DialogInterface.OnClickListener(){
-									@Override
 									public void onClick(final DialogInterface d, final int which) {
 										OpenStreetDDMap.this.mAvoidAreas.add(new CircleByCenterPoint(OpenStreetDDMap.this.mGPLastMapClick, valDist[which]));
 										/* Cause a Route-Refetch. */
@@ -1825,7 +1792,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 			}
 		});
 		this.mOSMapView.setOnTouchListener(new OnTouchListener(){
-			@Override
 			public boolean onTouch(final View v, final MotionEvent ev) {
 				OpenStreetDDMap.this.mAutoCenterBlockedUntil = System.currentTimeMillis() + AUTOCENTER_BLOCKTIME;
 				return gd.onTouchEvent(ev);
@@ -1874,7 +1840,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 					dialogMessage,
 					true,
 					new OnCancelListener(){
-				@Override
 				public void onCancel(final DialogInterface dialog) {
 					OpenStreetDDMap.this.finish();
 				}
@@ -1893,7 +1858,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 			OpenStreetDDMap.this.mOnRouteStatus = REFETCHING_ROUTE;
 
 			new Thread(new Runnable() {
-				@Override
 				public void run() {
 					boolean doRetry = true;
 					int count = 0;
@@ -1951,7 +1915,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 						} catch (final ORSException nrfe) {
 							Log.d(Constants.DEBUGTAG, "ERROR Creating ROute");
 							runOnUiThread(new Runnable() {
-								@Override
 								public void run() {
 									Toast.makeText(OpenStreetDDMap.this, nrfe.getErrors().get(0).toString(), Toast.LENGTH_SHORT).show();
 								}
@@ -1990,7 +1953,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 					Log.d(Constants.DEBUGTAG, "Route Found!");
 					/* Route was found... */
 					runOnUiThread(new Runnable() {
-						@Override
 						public void run() {
 							initNavigationOnRoute(OpenStreetDDMap.this.mRoute, pRestore);
 						}
@@ -2008,7 +1970,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 				private void askToTryWithoutStreetnumber(){
 					runOnUiThread(new Runnable() {
 
-						@Override
 						public void run() {
 							try{
 								OpenStreetDDMap.this.mRouteFetchProgressDialog.dismiss();
@@ -2017,14 +1978,12 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 								.setIcon(R.drawable.face_sad)
 								.setMessage(R.string.ddmap_info_route_fetch_tries_exceeded_ask_remove_streetnumber_message)
 								.setPositiveButton(R.string.yes_UPPERCASE, new DialogInterface.OnClickListener() {
-									@Override
 									public void onClick(final DialogInterface arg0, final int arg1) {
 										OpenStreetDDMap.this.mBundleCreatedWith.remove(EXTRAS_STREETNUMBER_ID);
 										OpenStreetDDMap.this.kickOffRouteFetch();
 									}
 								})
 								.setNegativeButton(R.string.no_UPPERCASE, new DialogInterface.OnClickListener() {
-									@Override
 									public void onClick(final DialogInterface arg0, final int arg1) {
 										OpenStreetDDMap.this.finish();
 									}
@@ -2032,7 +1991,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 
 								if(OpenStreetDDMap.this.mLastWorkingRoute != null){
 									ab.setNeutralButton(R.string.ddmap_info_route_fetch_useold, new DialogInterface.OnClickListener() {
-										@Override
 										public void onClick(final DialogInterface arg0, final int arg1) {
 											OpenStreetDDMap.this.mDoAutomaticRouteRefetch = false;
 											OpenStreetDDMap.this.mRoute = OpenStreetDDMap.this.mLastWorkingRoute;
@@ -2065,8 +2023,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 				 */
 				private void askRetryForReason(final int aTitleResID, final int aMessageResID) {
 					runOnUiThread(new Runnable() {
-
-						@Override
 						public void run() {
 							try{
 								OpenStreetDDMap.this.mRouteFetchProgressDialog.dismiss();
@@ -2075,13 +2031,11 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 								.setIcon(R.drawable.face_sad)
 								.setMessage(aMessageResID)
 								.setPositiveButton(R.string.yes_UPPERCASE, new DialogInterface.OnClickListener() {
-									@Override
 									public void onClick(final DialogInterface arg0, final int arg1) {
 										OpenStreetDDMap.this.kickOffRouteFetch();
 									}
 								})
 								.setNegativeButton(R.string.no_UPPERCASE, new DialogInterface.OnClickListener() {
-									@Override
 									public void onClick(final DialogInterface arg0, final int arg1) {
 										OpenStreetDDMap.this.finish();
 									}
@@ -2089,7 +2043,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 
 								if(OpenStreetDDMap.this.mLastWorkingRoute != null){
 									ab.setNeutralButton(R.string.ddmap_info_route_fetch_useold, new DialogInterface.OnClickListener() {
-										@Override
 										public void onClick(final DialogInterface arg0, final int arg1) {
 											OpenStreetDDMap.this.mDoAutomaticRouteRefetch = false;
 											OpenStreetDDMap.this.mRoute = OpenStreetDDMap.this.mLastWorkingRoute;
@@ -2294,7 +2247,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 	 */
 	private void setProgressDialogTitle(final String aTitle) {
 		runOnUiThread(new Runnable(){
-			@Override
 			public void run() {
 				try{
 					OpenStreetDDMap.this.mRouteFetchProgressDialog.setTitle(aTitle);
@@ -2347,7 +2299,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 
 	private class StaticNavOverlayControlView implements OSMMapViewItemizedOverlayControlView.ItemizedOverlayControlViewListener{
 
-		@Override
 		public void onCenter() {
 			if(OpenStreetDDMap.this.mRoute != null){
 				final List<RouteInstruction> turnPointsRaw = OpenStreetDDMap.this.mRoute.getRouteInstructions();
@@ -2366,12 +2317,10 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 			}
 		}
 
-		@Override
 		public void onNavTo() {
 			// Nothing, is disabled so it will never happen.
 		}
 
-		@Override
 		public void onNext() {
 			if(OpenStreetDDMap.this.mRoute != null){
 				final List<RouteInstruction> turnPointsRaw = OpenStreetDDMap.this.mRoute.getRouteInstructions();
@@ -2409,7 +2358,6 @@ public class OpenStreetDDMap extends OpenStreetMapAndNavBaseActivity implements 
 			OpenStreetDDMap.this.refreshHUD();
 		}
 
-		@Override
 		public void onPrevious() {
 			if(OpenStreetDDMap.this.mRoute != null){
 				OpenStreetDDMap.this.mStaticNavCurrentTurnIndex = Math.max(OpenStreetDDMap.this.mStaticNavCurrentTurnIndex - 1, 0);

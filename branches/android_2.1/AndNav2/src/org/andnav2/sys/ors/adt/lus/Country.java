@@ -440,12 +440,10 @@ public enum Country implements Parcelable {
 		}
 	};
 
-	@Override
 	public int describeContents() {
 		return 0;
 	}
 
-	@Override
 	public void writeToParcel(final Parcel out, final int flags) {
 		out.writeInt(this.ordinal());
 	}

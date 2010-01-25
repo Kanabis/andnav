@@ -88,7 +88,6 @@ public class SDFavorites extends AndNavBaseActivity {
 			updateFavListItems();
 
 			this.mFavList.setOnItemLongClickListener(new OnItemLongClickListener(){
-				@Override
 				public boolean onItemLongClick(final AdapterView<?> parent, final View view, final int position, final long id) {
 					SDFavorites.this.mSelectedFavoritePosition = position;
 					showDialog(DIALOG_SELECT_USE_OR_DELETE);
@@ -98,7 +97,6 @@ public class SDFavorites extends AndNavBaseActivity {
 
 			if(doStartNavOnClick){
 				this.mFavList.setOnItemClickListener(new OnItemClickListener(){
-					@Override
 					public void onItemClick(final AdapterView<?> parent, final View v, final int position, final long id) {
 						final Favorite f = (Favorite)parent.getAdapter().getItem(position);
 						handleFavoriteClicked(f);

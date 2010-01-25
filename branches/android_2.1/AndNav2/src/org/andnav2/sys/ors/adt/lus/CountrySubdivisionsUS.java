@@ -101,17 +101,14 @@ public enum CountrySubdivisionsUS implements ICountrySubdivision {
 	// Getter & Setter
 	// ===========================================================
 
-	@Override
 	public String getAbbreviation() {
 		return this.mAbbreviation;
 	}
 
-	@Override
 	public String getName() {
 		return this.mName;
 	}
 
-	@Override
 	public int getFlagResID() {
 		return this.mFlagResID;
 	}
@@ -120,7 +117,6 @@ public enum CountrySubdivisionsUS implements ICountrySubdivision {
 	// Methods from SuperClass/Interfaces
 	// ===========================================================
 
-	@Override
 	public String uid() {
 		return this.name();
 	}
@@ -147,12 +143,10 @@ public enum CountrySubdivisionsUS implements ICountrySubdivision {
 		}
 	};
 
-	@Override
 	public int describeContents() {
 		return 0;
 	}
 
-	@Override
 	public void writeToParcel(final Parcel out, final int flags) {
 		out.writeInt(this.ordinal());
 	}

@@ -47,7 +47,6 @@ public class GPXToFileWriter implements OSMConstants {
 
 	public static void writeToFileAsync(final ArrayList<GeoPoint> recordedGeoPoints){
 		new Thread(new Runnable(){
-			@Override
 			public void run() {
 				try {
 					// Ensure folder exists

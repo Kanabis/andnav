@@ -61,12 +61,10 @@ public class MediaPlayerManager implements ISoundManager {
 	// Methods from SuperClass/Interfaces
 	// ===========================================================
 
-	@Override
 	public void playSound(final int soundResId) {
 		this.mMediaPlayerPool.get(soundResId).start();
 	}
 
-	@Override
 	public void playFollowUpSounds(final int ... soundResIds) {
 		for(int i = 1; i < soundResIds.length; i++) {
 			this.mFollowUpSounds.put(soundResIds[i-1], soundResIds[i]);
@@ -76,17 +74,14 @@ public class MediaPlayerManager implements ISoundManager {
 		this.mMediaPlayerPool.get(soundResIds[0]).start();
 	}
 
-	@Override
 	public void preloadSound(final int resID) {
 		// Nothing to do
 	}
 
-	@Override
 	public void preloadSounds(final int[] resIDs) {
 		// Nothing to do
 	}
 
-	@Override
 	public void releaseAll() {
 		this.mMediaPlayerPool.releaseAll();
 	}
@@ -122,7 +117,6 @@ public class MediaPlayerManager implements ISoundManager {
 				/* Create a new MediaPlayer, which later will return to the pool. */
 				final MediaPlayer mp = MediaPlayer.create(getContext(), soundResId);
 				mp.setOnCompletionListener(new OnCompletionListener(){
-					@Override
 					public void onCompletion(final MediaPlayer mp) {
 						mp.seekTo(0);
 						returnToPool(soundResId, mp);

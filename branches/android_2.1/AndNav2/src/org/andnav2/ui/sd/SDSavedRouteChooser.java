@@ -289,7 +289,6 @@ public class SDSavedRouteChooser extends AndNavBaseActivity implements OSMConsta
 
 	protected void initListView() {
 		this.mSavedRoutesList.setOnItemClickListener(new OnItemClickListener(){
-			@Override
 			public void onItemClick(final AdapterView<?> parent, final View v, final int position, final long id) {
 				SDSavedRouteChooser.this.mSelectedSavedRoute = (SavedRouteItem)parent.getAdapter().getItem(position);
 				showDialog(DIALOG_SHOWSELECTEDROUTEOPTIONS_ID);
@@ -308,7 +307,6 @@ public class SDSavedRouteChooser extends AndNavBaseActivity implements OSMConsta
 			this.mFileName = pFileName;
 		}
 
-		@Override
 		public int compareTo(final SavedRouteItem another) {
 			final boolean thisFirstDigit = Character.isDigit(this.mFileName.charAt(0));
 			final boolean otherFirstDigit = Character.isDigit(another.mFileName.charAt(0));
@@ -339,12 +337,10 @@ public class SDSavedRouteChooser extends AndNavBaseActivity implements OSMConsta
 			}
 		};
 
-		@Override
 		public int describeContents() {
 			return 0;
 		}
 
-		@Override
 		public void writeToParcel(final Parcel out, final int arg1) {
 			out.writeString(this.mFileName);
 		}
@@ -405,10 +401,8 @@ public class SDSavedRouteChooser extends AndNavBaseActivity implements OSMConsta
 
 		public Object getItem(final int position) { return this.mItems.get(position); }
 
-		@Override
 		public long getItemId(final int position) { return position; }
 
-		@Override
 		public View getView(final int position, final View convertView, final ViewGroup parent) {
 			SavedRouteListItemView btv;
 			if (convertView == null) {
@@ -425,7 +419,6 @@ public class SDSavedRouteChooser extends AndNavBaseActivity implements OSMConsta
 		// FastScrollView-Methods
 		// ===========================================================
 
-		@Override
 		public int getPositionForSection(final int section) {
 
 			final String firstChar = this.mAlphabet[section];
@@ -442,12 +435,10 @@ public class SDSavedRouteChooser extends AndNavBaseActivity implements OSMConsta
 			return position;
 		}
 
-		@Override
 		public int getSectionForPosition(final int position) {
 			return 0;
 		}
 
-		@Override
 		public Object[] getSections() {
 			return this.mAlphabet;
 		}

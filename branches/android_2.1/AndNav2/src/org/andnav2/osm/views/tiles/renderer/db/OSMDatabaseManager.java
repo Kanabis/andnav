@@ -118,7 +118,6 @@ public class OSMDatabaseManager implements OSMDatabaseConstants, Constants {
 		}
 
 		Collections.sort(ways, new Comparator<OSMWay>(){
-			@Override
 			public int compare(final OSMWay pWayA, final OSMWay pWayB) {
 				return pWayA.getZOrder() - pWayB.getZOrder();
 			}

@@ -228,7 +228,6 @@ public class SDResolver extends AndNavBaseActivity {
 
 					if(resolved == null || resolved.size() == 0){
 						runOnUiThread(new Runnable(){
-							@Override
 							public void run() {
 								Toast.makeText(SDResolver.this, R.string.toast_could_not_resolve_address, Toast.LENGTH_LONG).show();
 							}
@@ -245,7 +244,6 @@ public class SDResolver extends AndNavBaseActivity {
 					SDResolver.this.mResolvingFinished = true;
 				}catch(final ORSException e){
 					runOnUiThread(new Runnable(){
-						@Override
 						public void run() {
 							Toast.makeText(SDResolver.this, R.string.toast_could_not_resolve_address, Toast.LENGTH_LONG).show();
 						}
@@ -270,7 +268,6 @@ public class SDResolver extends AndNavBaseActivity {
 		};
 
 		pd.setOnCancelListener(new OnCancelListener(){
-			@Override
 			public void onCancel(final DialogInterface d) {
 				d.dismiss();
 				if(ut != null) {
@@ -284,7 +281,6 @@ public class SDResolver extends AndNavBaseActivity {
 
 	protected void initListView() {
 		this.mResolvedAddressesList.setOnItemClickListener(new OnItemClickListener(){
-			@Override
 			public void onItemClick(final AdapterView<?> parent, final View v, final int position, final long id) {
 				final GeocodedAddressItem r = (GeocodedAddressItem)parent.getAdapter().getItem(position);
 
@@ -364,7 +360,6 @@ public class SDResolver extends AndNavBaseActivity {
 			this.mGeocodedAddress = pGeocodedAddress;
 		}
 
-		@Override
 		public int compareTo(final GeocodedAddressItem another) {
 			final float diff = -(this.mGeocodedAddress.getAccuracy() - another.mGeocodedAddress.getAccuracy());
 			if(Math.abs(diff) < 0.001f){
@@ -395,12 +390,10 @@ public class SDResolver extends AndNavBaseActivity {
 			}
 		};
 
-		@Override
 		public int describeContents() {
 			return 0;
 		}
 
-		@Override
 		public void writeToParcel(final Parcel out, final int flags) {
 			out.writeParcelable(this.mGeocodedAddress, 0);
 		}
@@ -495,10 +488,8 @@ public class SDResolver extends AndNavBaseActivity {
 
 		public Object getItem(final int position) { return this.mItems.get(position); }
 
-		@Override
 		public long getItemId(final int position) { return position; }
 
-		@Override
 		public View getView(final int position, final View convertView, final ViewGroup parent) {
 			GeoCodedAddressListItemView btv;
 			if (convertView == null) {

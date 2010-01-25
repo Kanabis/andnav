@@ -67,7 +67,6 @@ public class SettingsTracePolicy extends AndNavBaseActivity{
 	private void applyViewListeners() {
 
 		this.mChkFilterMinimalTraces.setOnCheckedChangeListener(new OnCheckedChangeListener(){
-			@Override
 			public void onCheckedChanged(final CompoundButton me, final boolean isChecked) {
 				Preferences.saveMinimalTraceFilteringEnabled(SettingsTracePolicy.this, isChecked);
 			}

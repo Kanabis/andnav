@@ -52,12 +52,10 @@ public abstract class HUDBaseView extends ImageView implements IHUDView, Constan
 	// Methods from SuperClass/Interfaces
 	// ===========================================================
 
-	@Override
 	public void onClick(){
 		// Nothing
 	}
 
-	@Override
 	public void reset() {
 		this.mDistance = NOT_SET;
 	}
@@ -65,17 +63,14 @@ public abstract class HUDBaseView extends ImageView implements IHUDView, Constan
 	/**
 	 * @param aMeterDistance in meters!
 	 */
-	@Override
 	public void setDistance(final int aMeterDistance){
 		this.mDistance = aMeterDistance;
 	}
 
-	@Override
 	public void setUnitSystem(final UnitSystem aUnitSystem){
 		this.mUnitSystem = aUnitSystem;
 	}
 
-	@Override
 	public void setDisplayQuality(final int aDisplayQuality){
 		switch(aDisplayQuality){
 			case PREF_DISPLAYQUALITY_BEST:

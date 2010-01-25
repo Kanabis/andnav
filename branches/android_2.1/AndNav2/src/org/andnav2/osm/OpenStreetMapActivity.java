@@ -172,7 +172,6 @@ public abstract class OpenStreetMapActivity extends Activity implements DataStat
 		this.onResumeForDataStateChangedListener();
 	}
 
-	@Override
 	public void onDataStateChanged(final int strength) {
 		// TODO
 	}
@@ -180,7 +179,6 @@ public abstract class OpenStreetMapActivity extends Activity implements DataStat
 	protected abstract void onLocationChanged(final AndNavLocation pLocation);
 	protected abstract void onLocationLost(final AndNavLocation pLocation);
 
-	@Override
 	public void fireLocationChanged(final AndNavLocation pLocation) {
 		if(OpenStreetMapActivity.this.mDoGPSRecordingAndContributing) {
 			OpenStreetMapActivity.this.mRouteRecorder.add(pLocation);
@@ -190,7 +188,6 @@ public abstract class OpenStreetMapActivity extends Activity implements DataStat
 		onLocationChanged(pLocation);
 	}
 
-	@Override
 	public void fireLocationLost(final AndNavLocation pLocation) {
 		// TODO Vllt neues segment im recorder?
 		onLocationLost(pLocation);
@@ -236,12 +233,10 @@ public abstract class OpenStreetMapActivity extends Activity implements DataStat
 		super.onPause();
 	}
 
-	@Override
 	public void onPauseForDataStateChangedListener() {
 		this.mDscw.unregister();
 	}
 
-	@Override
 	public void onResumeForDataStateChangedListener() {
 		/** Initiates the local field <code>dsir</code> a
 		 * DataStateChangedWatcher to notify this class

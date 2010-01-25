@@ -241,7 +241,6 @@ public class SDPOIEntry extends AndNavBaseActivity{
 	 * which calls handleButtonClick(String caption).*/
 	protected void applyKeyPadGridOnItemClickListener() {
 		this.keyBoardGrid.setOnItemClickListener(new OnItemClickListener(){
-			@Override
 			public void onItemClick(final AdapterView<?> arg0, final View v, final int arg2, final long arg3) {
 				/* Extract the Caption of the Button. */
 				final String theCaption = ((Button)v).getText().toString();
@@ -312,7 +311,6 @@ public class SDPOIEntry extends AndNavBaseActivity{
 	/** Apply OnItemClickListener to add the letter pressed to the EditText.
 	 * This Listener will get called on actual CLICKS to the BUTTONS! */
 	protected OnClickListener mGridButtonListener = new OnClickListener() {
-		@Override
 		public void onClick(final View v) {
 			/* Extract the Caption of the Button. */
 			final String theCaption = ((Button)v).getText().toString();

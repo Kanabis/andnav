@@ -108,20 +108,17 @@ public class Menu extends AndNavGPSActivity {
 
 	private void applyMenuButtonListeners() {
 		findViewById(R.id.btn_bug).setOnClickListener(new OnClickListener() {
-			@Override
 			public void onClick(final View v) {
 				Util.sendSupportEmail(Menu.this);
 			}
 		});
 		findViewById(R.id.btn_wiki).setOnClickListener(new OnClickListener() {
-			@Override
 			public void onClick(final View v) {
 				final Intent faqWebIntent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("http://wiki.andnav.org"));
 				startActivity(faqWebIntent);
 			}
 		});
 		findViewById(R.id.btn_donate).setOnClickListener(new OnClickListener() {
-			@Override
 			public void onClick(final View v) {
 				final Intent donateIntent = new Intent(Menu.this, Donate.class);
 				startActivityForResult(donateIntent, REQUESTCODE_DONATE);
@@ -313,7 +310,6 @@ public class Menu extends AndNavGPSActivity {
 				.setTitle(R.string.tts_not_installed_title)
 				.setIcon(R.drawable.information)
 				.setPositiveButton(R.string.install, new DialogInterface.OnClickListener() {
-					@Override
 					public void onClick(DialogInterface pDialog, int pWhich) {
 						// missing data, install it
 						Intent installIntent = new Intent();
@@ -322,13 +318,11 @@ public class Menu extends AndNavGPSActivity {
 					}
 				})
 				.setNeutralButton(R.string.cancel, new DialogInterface.OnClickListener(){
-					@Override
 					public void onClick(final DialogInterface d, final int which) {
 						d.dismiss();
 					}
 				})
 				.setNegativeButton(R.string.nevershowagain, new DialogInterface.OnClickListener(){
-					@Override
 					public void onClick(final DialogInterface d, final int which) {
 						d.dismiss();
 						Preferences.saveShowTTSNotInstalledInfo(Menu.this, false);

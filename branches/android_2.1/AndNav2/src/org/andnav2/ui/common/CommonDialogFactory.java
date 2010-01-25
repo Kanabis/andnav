@@ -61,7 +61,6 @@ public class CommonDialogFactory {
 		}
 
 		return new AlertDialog.Builder(ctx).setSingleChoiceItems(choices , 0, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 
@@ -88,7 +87,6 @@ public class CommonDialogFactory {
 		.setView(fl)
 		.setTitle(R.string.dlg_input_osm_account_title)
 		.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				final String username = etUsername.getText().toString();
 				final String password = etPassword.getText().toString();
@@ -110,7 +108,6 @@ public class CommonDialogFactory {
 			}
 		})
 		.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 				pCallback.onSuccess(false);
@@ -130,7 +127,6 @@ public class CommonDialogFactory {
 		.setTitle(R.string.dlg_input_direct_lat_lon_title)
 		.setIcon(R.drawable.world_small)
 		.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				try{
 					final double lat;
@@ -161,7 +157,6 @@ public class CommonDialogFactory {
 			}
 		})
 		.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 			}
@@ -175,7 +170,6 @@ public class CommonDialogFactory {
 	public static Dialog createTTSConfigOrTestDialog(final Context ctx, final CommonCallback<Integer> pCallback) {
 		final String[] choices = {ctx.getString(R.string.dlg_settings_voice_tts_change_settings), ctx.getString(R.string.dlg_settings_voice_tts_play_sample)};
 		return new AlertDialog.Builder(ctx).setSingleChoiceItems(choices , 0, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 
@@ -195,7 +189,6 @@ public class CommonDialogFactory {
 	public static Dialog createFreeformOrStructuredAddressSelectorDialog(final Context ctx, final CommonCallback<Integer> pCallback) {
 		final String[] choices = {ctx.getString(R.string.sd_search_address_freeform), ctx.getString(R.string.sd_search_address_structured)};
 		return new AlertDialog.Builder(ctx).setSingleChoiceItems(choices , 0, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 
@@ -217,7 +210,6 @@ public class CommonDialogFactory {
 		return new AlertDialog.Builder(ctx)
 		.setTitle(R.string.dlg_osb_choose_what_to_add)
 		.setSingleChoiceItems(choices , 0, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 
@@ -251,7 +243,6 @@ public class CommonDialogFactory {
 		.setTitle(R.string.dlg_input_favorite_name_title)
 		.setIcon(R.drawable.settingsmenu_favorites)
 		.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				try{
 					final String name = etName.getText().toString();
@@ -269,7 +260,6 @@ public class CommonDialogFactory {
 			}
 		})
 		.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 			}
@@ -279,7 +269,6 @@ public class CommonDialogFactory {
 	public static Dialog createFreeformOrCategorizedPOISelectorDialog(final Context ctx, final CommonCallback<Intent> pCallback) {
 		final String[] choices = {ctx.getString(R.string.poi_search_categorized), ctx.getString(R.string.poi_search_freeform)};
 		return new AlertDialog.Builder(ctx).setSingleChoiceItems(choices , 0, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 
@@ -316,7 +305,6 @@ public class CommonDialogFactory {
 
 			private boolean mListShown = false;
 
-			@Override
 			public void onClick(final View v) {
 				if(!this.mListShown){
 					btnFeedList.setText(R.string.dlg_customtrafficfeed_clipboardpaste);
@@ -346,7 +334,6 @@ public class CommonDialogFactory {
 		.setTitle(R.string.dlg_customtrafficfeed_title)
 		.setIcon(R.drawable.traffic_feed)
 		.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				try{
 					final String name = etName.getText().toString().trim();
@@ -375,7 +362,6 @@ public class CommonDialogFactory {
 			}
 		})
 		.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 			}
@@ -399,7 +385,6 @@ public class CommonDialogFactory {
 		choices[0] = "Add new..."; //TODO i18n
 
 		return new AlertDialog.Builder(ctx).setSingleChoiceItems(choices , 0, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				if(which == 0) {
 					pCallback.onSuccess(null);
@@ -423,7 +408,6 @@ public class CommonDialogFactory {
 		.setSingleChoiceItems(new String[]{ctx.getString(R.string.settings_favortites_contextmenu_use), ctx.getString(R.string.settings_favortites_contextmenu_delete)},
 				0,
 				new OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 				pCallback.onSuccess(which);
@@ -437,14 +421,12 @@ public class CommonDialogFactory {
 		.setTitle(R.string.eula_title)
 		.setMessage(R.string.eula)
 		.setPositiveButton(R.string.eula_accept, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 				pCallback.onSuccess(true);
 			}
 		})
 		.setNegativeButton(R.string.eula_decline, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 				pCallback.onSuccess(false);
@@ -458,13 +440,11 @@ public class CommonDialogFactory {
 		.setTitle(R.string.startup_gpsrequried_title)
 		.setMessage(R.string.startup_gpsrequried_message)
 		.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				pCallback.onSuccess(true);
 			}
 		})
 		.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				pCallback.onSuccess(false);
 			}
@@ -478,13 +458,11 @@ public class CommonDialogFactory {
 		.setTitle(R.string.instructions)
 		.setMessage(R.string.osb_instructions)
 		.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which){
 				pCallback.onSuccess(true);
 			}
 		})
 		.setNegativeButton(R.string.nevershowagain, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which){
 				pCallback.onSuccess(false);
 			}
@@ -508,14 +486,12 @@ public class CommonDialogFactory {
 		.setTitle(pTextualTitleResID)
 		.setView(fl)
 		.setPositiveButton(R.string.ok, new OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int arg1) {
 				pCallback.onSuccess(etInput.getText().toString());
 				d.dismiss();
 			}
 		})
 		.setNegativeButton(R.string.cancel, new OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int arg1) {
 				d.dismiss();
 			}
@@ -529,7 +505,6 @@ public class CommonDialogFactory {
 				ctx.getString(R.string.dlg_sd_savedroutechooser_contextmenu_information)};
 
 		return new AlertDialog.Builder(ctx).setSingleChoiceItems(choices , 0, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 				// TODO SHARE
@@ -555,7 +530,6 @@ public class CommonDialogFactory {
 				ctx.getString(R.string.dlg_sd_savedtracechooser_contextmenu_share_trailmapping)};
 
 		return new AlertDialog.Builder(ctx).setSingleChoiceItems(choices , 0, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 				switch(which){
@@ -582,7 +556,6 @@ public class CommonDialogFactory {
 				ctx.getString(R.string.settings_orsserver_contextmenu_information)};
 
 		return new AlertDialog.Builder(ctx).setSingleChoiceItems(choices , 0, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 				switch(which){
@@ -603,7 +576,6 @@ public class CommonDialogFactory {
 	public static Dialog createDiagonalDirectionDialog(final Context ctx, final CommonCallback<Direction> pCallback) {
 		final String[] choices = {Direction.NORTHEAST.NAME, Direction.SOUTHEAST.NAME, Direction.SOUTHWEST.NAME, Direction.NORTHWEST.NAME};
 		return new AlertDialog.Builder(ctx).setSingleChoiceItems(choices , 0, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 				switch(which){
@@ -627,13 +599,11 @@ public class CommonDialogFactory {
 	public static Dialog createReportBugDialog(final Context ctx, final CommonCallback<Boolean> pCallback) {
 		return new AlertDialog.Builder(ctx).setMessage("Please report bugs to support@andnav.org with a brief description of the problem. Thank you!") // TODO i18n
 		.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				pCallback.onSuccess(true);
 			}
 		})
 		.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				pCallback.onSuccess(false);
 			}
@@ -655,7 +625,6 @@ public class CommonDialogFactory {
 		.setMessage(sb.toString())
 		.setIcon(R.drawable.hardhat)
 		.setNegativeButton(R.string.ok, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 			}
@@ -671,7 +640,6 @@ public class CommonDialogFactory {
 		.setTitle(R.string.maps_menu_altitude_profile_title)
 		.setView(container)
 		.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 				pCallback.onSuccess(null);
@@ -687,14 +655,12 @@ public class CommonDialogFactory {
 		.setTitle(R.string.success)
 		.setMessage(pMessageResID)
 		.setPositiveButton(R.string.refresh, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 				pCallback.onSuccess(true);
 			}
 		})
 		.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 			}
@@ -716,7 +682,6 @@ public class CommonDialogFactory {
 		.setView(fl)
 		.setTitle(R.string.dlg_osb_edit_bug_title)
 		.setPositiveButton(R.string.save, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				final String newComment = etComment.getText().toString();
 
@@ -730,7 +695,6 @@ public class CommonDialogFactory {
 
 				Toast.makeText(ctx, R.string.please_wait_a_moment, Toast.LENGTH_LONG).show();
 				new Thread(new Runnable(){
-					@Override
 					public void run() {
 						final String commentWithName;
 
@@ -750,7 +714,6 @@ public class CommonDialogFactory {
 			}
 		})
 		.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 			}
@@ -775,7 +738,6 @@ public class CommonDialogFactory {
 		.setView(fl)
 		.setTitle(R.string.dlg_osb_edit_bug_title)
 		.setPositiveButton(R.string.save, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				final String newComment = etNewComment.getText().toString();
 				final boolean closeBug = cbCloseBug.isChecked();
@@ -790,7 +752,6 @@ public class CommonDialogFactory {
 
 				Toast.makeText(ctx, R.string.please_wait_a_moment, Toast.LENGTH_LONG).show();
 				new Thread(new Runnable(){
-					@Override
 					public void run() {
 						final String commentWithName;
 						if(commenterName.length() == 0){
@@ -808,7 +769,6 @@ public class CommonDialogFactory {
 			}
 		})
 		.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 			}
@@ -830,14 +790,12 @@ public class CommonDialogFactory {
 		.setView(fl)
 		.setTitle(R.string.dlg_osb_edit_bug_title)
 		.setPositiveButton(R.string.save, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				pCallback.onSuccess(etPOIName.getText().toString());
 				d.dismiss();
 			}
 		})
 		.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				pCallback.onFailure(new OSMAPIException("Aborted"));
 				d.dismiss();
@@ -882,13 +840,11 @@ public class CommonDialogFactory {
 		.setTitle(R.string.dlg_notinliteversion_title)
 		.setMessage(R.string.dlg_notinliteversion_message)
 		.setPositiveButton(R.string.dlg_notinliteversion_moreinfo, new OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface arg0, final int arg1) {
 				pCallback.onSuccess(true);
 			}
 		})
 		.setNegativeButton(R.string.cancel, new OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface arg0, final int arg1) {
 				pCallback.onSuccess(false);
 			}
@@ -911,7 +867,6 @@ public class CommonDialogFactory {
 		.setTitle(R.string.instructions)
 		.setMessage(R.string.orsserver_selection_changeable)
 		.setPositiveButton(R.string.ok, new OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface arg0, final int arg1) {
 				pCallback.onSuccess(null);
 			}
@@ -927,7 +882,6 @@ public class CommonDialogFactory {
 		}
 
 		return new AlertDialog.Builder(ctx).setSingleChoiceItems(choices , 0, new DialogInterface.OnClickListener(){
-			@Override
 			public void onClick(final DialogInterface d, final int which) {
 				d.dismiss();
 				switch(which){

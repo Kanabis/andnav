@@ -183,7 +183,6 @@ public class SDCity extends AndNavBaseActivity {
 						return out;
 					} catch (final ORSException e) {
 						runOnUiThread(new Runnable(){
-							@Override
 							public void run() {
 								Toast.makeText(SDCity.this, e.getErrors().get(0).toUserString(), Toast.LENGTH_SHORT).show();
 							}
@@ -231,7 +230,6 @@ public class SDCity extends AndNavBaseActivity {
 	 * which calls handleButtonClick(String caption).*/
 	protected void applyKeyPadGridOnItemClickListener() {
 		this.keyBoardGrid.setOnItemClickListener(new OnItemClickListener(){
-			@Override
 			public void onItemClick(final AdapterView<?> arg0, final View v, final int arg2, final long arg3) {
 				/* Extract the Caption of the Button. */
 				final String theCaption = ((Button)v).getText().toString();
@@ -243,7 +241,6 @@ public class SDCity extends AndNavBaseActivity {
 	protected void applyOkButtonListener() {
 		/* Set OnClickListener for OK-Button. */
 		findViewById(R.id.btn_sd_city_ok).setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View v) {
 				SDCity.this.advanceToNextScreen();
 			}
@@ -295,7 +292,6 @@ public class SDCity extends AndNavBaseActivity {
 	/** Apply OnItemClickListener to add the letter pressed to the EditText.
 	 * This Listener will get called on actual CLICKS to the BUTTONS! */
 	protected OnClickListener mGridButtonListener = new OnClickListener() {
-		@Override
 		public void onClick(final View v) {
 			/* Extract the Caption of the Button. */
 			final String theCaption = ((Button)v).getText().toString();

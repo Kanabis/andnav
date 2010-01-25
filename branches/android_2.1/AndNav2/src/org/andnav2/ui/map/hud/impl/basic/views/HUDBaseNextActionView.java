@@ -100,13 +100,11 @@ public abstract class HUDBaseNextActionView extends HUDBaseView implements IHUDN
 	// Getter & Setter
 	// ===========================================================
 
-	@Override
 	public void setTurnAngle(final float aAngle){
 		this.mNextTurnAngle = aAngle;
 		this.showTargetReachedInsteadOfAngle = false;
 	}
 
-	@Override
 	public void setCurrentMeterSpeed(final float aMeterSpeed){
 		this.mCurrentSpeed = aMeterSpeed * this.mUnitSystem.mScaleToMetersPerSecond;
 	}
@@ -117,7 +115,6 @@ public abstract class HUDBaseNextActionView extends HUDBaseView implements IHUDN
 		this.mNextTurnAngle = NOT_SET;
 	}
 
-	@Override
 	public void showTargetReached() {
 		this.showTargetReachedInsteadOfAngle = true;
 	}
@@ -130,7 +127,6 @@ public abstract class HUDBaseNextActionView extends HUDBaseView implements IHUDN
 	protected abstract void onConfigureValuePaint(final Paint pHudTextPaint);
 	protected abstract void onConfigureUnitPaint(final Paint pHudTextPaint);
 
-	@Override
 	public void recycle() {
 		this.TURN_ARROW_LEFT_90.recycle();
 		this.TURN_ARROW_LEFT_45.recycle();
