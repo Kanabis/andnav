@@ -21,7 +21,7 @@
 	<!-- Choose between adding OSB or FTPC -->
 	<string name="dlg_osb_choose_what_to_add">Vybrat...</string>
 	<string name="dlg_osb_choose_what_to_add_osmpoi">přidat POI</string>
-	<string name="dlg_osb_choose_what_to_add_osb">Bug nahlásit</string>
+	<string name="dlg_osb_choose_what_to_add_osb">nahlásit Bug</string>
 	<string name="dlg_osb_choose_what_to_add_ftpc">přidat UK Postcode</string>
 	
 	<!-- Editing Bugs -->
@@ -45,7 +45,7 @@
 	<string name="dlg_osb_add_bug_success">Bug úspěšně přidán!\n\nZnovu načíst?</string>
 	
 	<!-- Adding FreeThePostCode -->
-	<string name="dlg_osb_add_ftpc_title">přídat UK-Postcode...</string>
+	<string name="dlg_osb_add_ftpc_title">přidat UK-Postcode...</string>
 	<string name="dlg_osb_add_ftpc_default_postcode1">SW1A</string>
 	<string name="dlg_osb_add_ftpc_default_postcode2">0AA</string>
 	<string name="dlg_osb_add_ftpc_postcode">Postcode:</string>
@@ -55,7 +55,7 @@
 	<string name="dlg_osb_ftpc_mail_invalid_comment"><b>Neplatná</b> E-Mail Addresa.\nBude nutná pro potvrzení!</string>
 	<string name="dlg_osb_ftpc_postcode_invalid_comment"><b>Špatný</b> Postcode-Format.\nPříklad: <b>[SW1A]</b> <b>[0AA]</b>!</string>
 	<string name="dlg_osb_add_ftpc_success"><b>Úspěch</b>. V krátkosti obdržíte potvrzení emailem.</string>
-	<string name="dlg_osb_add_ftpc_failed">Zřejmě se vyskytla <b>Chyba</b>.\nProsím přesto zkontrolujte email.</string>
+	<string name="dlg_osb_add_ftpc_failed">Zřejmě se vyskytla <b>Chyba</b>.\nPřesto prosím zkontrolujte email.</string>
 	
 	<!-- OSM-POIs -->
 	<string name="dlg_input_osmpoiname_title">zadejte jméno POI...</string>
