@@ -10,7 +10,7 @@ In particular it describes the andnav2 design and implementation.
 
 = Details =
 
-When AndNav2 is started the natural progression of views is as follows:
+When !AndNav2 is started the natural progression of views is as follows:
 (Omitting the ancillary views.)
  * The top level activity is .Splash
    * The EULA dialog is presented (unless previously accepted)
