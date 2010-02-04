@@ -226,7 +226,7 @@ public class MapDrivingDirectionsOverlay extends OSMMapViewOverlay implements Co
 	}
 
 	@Override
-	protected void onDrawFinished(final Canvas c, final OSMMapView osmv) {
+	protected void onDrawFocused(final Canvas c, final OSMMapView osmv) {
 		// Nothing
 	}
 

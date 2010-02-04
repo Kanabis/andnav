@@ -61,7 +61,7 @@ public class OSMMapViewSimpleLocationOverlay extends OSMMapViewOverlay {
 	}
 
 	@Override
-	protected void onDrawFinished(final Canvas c, final OSMMapView osmv) {
+	protected void onDrawFocused(final Canvas c, final OSMMapView osmv) {
 		return;
 	}
 

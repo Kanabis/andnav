@@ -3,6 +3,8 @@ package org.andnav2.osm.views.overlay;
 
 import java.util.List;
 
+import org.andnav2.R;
+
 import android.content.Context;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
@@ -21,11 +23,6 @@ public class BaseOSMMapViewListItemizedOverlayWithFocus<T extends OSMMapViewOver
 	// ===========================================================
 	// Constructors
 	// ===========================================================
-
-	public BaseOSMMapViewListItemizedOverlayWithFocus(final Context ctx, final List<T> pList, final OnItemTapListener<T> onItemTapListener) {
-		super(ctx, onItemTapListener);
-		this.mItems = pList;
-	}
 
 	public BaseOSMMapViewListItemizedOverlayWithFocus(final Context ctx, final List<T> pList, final Drawable pMarker, final Point pMarkerHotspot, final Drawable pMarkerFocusedBase, final Point pMarkerFocusedHotSpot, final int pFocusedBackgroundColor, final OnItemTapListener<T> pOnItemTapListener) {
 		super(ctx, pMarker, pMarkerHotspot, pMarkerFocusedBase, pMarkerFocusedHotSpot, pFocusedBackgroundColor, pOnItemTapListener);
