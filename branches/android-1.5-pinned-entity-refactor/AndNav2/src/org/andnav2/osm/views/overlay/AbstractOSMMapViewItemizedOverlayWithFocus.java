@@ -14,7 +14,6 @@ import android.graphics.Point;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 
-
 public abstract class AbstractOSMMapViewItemizedOverlayWithFocus<T extends OSMMapViewOverlayItem> extends AbstractOSMMapViewItemizedOverlay<T> {
 	// ===========================================================
 	// Constants
@@ -120,7 +119,6 @@ public abstract class AbstractOSMMapViewItemizedOverlayWithFocus<T extends OSMMa
 		return super.onTap(pIndex);
 	}
 
-	@Override
 	protected void onDrawFocused(final Canvas c, final OSMMapView osmv) {
 		final List<T> overlayItems = this.getOverlayItems();
 		if(this.mFocusedItem == null) return;
