@@ -1,5 +1,6 @@
 
 SVN_BRANCH=./branches/android-1.5-pinned-entity-refactor/AndNav2
+# SVN_BRANCH=../../git-back
 GIT_REPOS=../../git_andnav
 
 help:

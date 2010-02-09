@@ -4,10 +4,10 @@ package org.andnav2.osm.views.overlay;
 import java.util.List;
 
 import android.content.Context;
-import android.graphics.Point;
-import android.graphics.drawable.Drawable;
 
-public class BaseOSMMapViewListItemizedOverlayWithFocus<T extends OSMMapViewOverlayItem> extends AbstractOSMMapViewItemizedOverlayWithFocus<T> {
+public class BaseOSMMapViewListItemizedOverlayWithFocus<T extends OSMMapViewOverlayItem> 
+		extends AbstractOSMMapViewItemizedOverlayWithFocus<T> 
+{
 	// ===========================================================
 	// Constants
 	// ===========================================================
@@ -22,8 +22,13 @@ public class BaseOSMMapViewListItemizedOverlayWithFocus<T extends OSMMapViewOver
 	// Constructors
 	// ===========================================================
 
-	public BaseOSMMapViewListItemizedOverlayWithFocus(final Context ctx, final List<T> pList, final Drawable pMarker, final Point pMarkerHotspot, final Drawable pMarkerFocusedBase, final Point pMarkerFocusedHotSpot, final int pFocusedBackgroundColor, final OnItemTapListener<T> pOnItemTapListener) {
-		super(ctx, pMarker, pMarkerHotspot, pMarkerFocusedBase, pMarkerFocusedHotSpot, pFocusedBackgroundColor, pOnItemTapListener);
+	public BaseOSMMapViewListItemizedOverlayWithFocus(final Context ctx, 
+			final List<T> pList, 
+			final AbstractOSMMapViewMarker pMarker, 
+			final AbstractOSMMapViewMarker pMarkerFocusedBase,
+			final int pFocusedBackgroundColor, 
+			final OnItemTapListener<T> pOnItemTapListener) {
+		super(ctx, pMarker, pMarkerFocusedBase, pFocusedBackgroundColor, pOnItemTapListener);
 		this.mItems = pList;
 	}
 	// ===========================================================

@@ -24,6 +24,7 @@ import org.andnav2.osm.views.OSMMapView.OnChangeListener;
 import org.andnav2.osm.views.controller.OSMMapViewController.AnimationType;
 import org.andnav2.osm.views.overlay.AbstractOSMMapViewItemizedOverlay;
 import org.andnav2.osm.views.overlay.AbstractOSMMapViewItemizedOverlayWithFocus;
+import org.andnav2.osm.views.overlay.AbstractOSMMapViewMarker;
 import org.andnav2.osm.views.overlay.BaseOSMMapViewListItemizedOverlayWithFocus;
 import org.andnav2.osm.views.overlay.OSMMapViewCrosshairOverlay;
 import org.andnav2.osm.views.overlay.OSMMapViewDirectedLocationOverlay;
@@ -31,6 +32,7 @@ import org.andnav2.osm.views.overlay.OSMMapViewItemizedOverlayControlView;
 import org.andnav2.osm.views.overlay.OSMMapViewOverlay;
 import org.andnav2.osm.views.overlay.OSMMapViewOverlayItem;
 import org.andnav2.osm.views.overlay.OSMMapViewSimpleLineOverlay;
+import org.andnav2.osm.views.overlay.OSMMapViewSimpleMarker;
 import org.andnav2.osm.views.overlay.OSMMapViewSingleIconOverlay;
 import org.andnav2.osm.views.overlay.AbstractOSMMapViewItemizedOverlay.OnItemTapListener;
 import org.andnav2.osm.views.tiles.OSMMapTileManager;
@@ -323,10 +325,16 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 
 		this.mSearchPinList = items;
 
-		final Drawable marker = this.getResources().getDrawable(R.drawable.entity_unit);
+		final AbstractOSMMapViewMarker marker = 
+			new OSMMapViewSimpleMarker(this.getResources().getDrawable(R.drawable.entity_unit),
+					 DEFAULTMARKER_HOTSPOT);
+		
+		final AbstractOSMMapViewMarker focusedMarker = 
+			new OSMMapViewSimpleMarker(this.getResources().getDrawable(R.drawable.entity_unit),
+					 DEFAULTMARKER_HOTSPOT);
 		
 		this.mItemOverlay = new BaseOSMMapViewListItemizedOverlayWithFocus<OSMMapViewOverlayItem>(this, 
-				this.mSearchPinList, marker, DEFAULTMARKER_HOTSPOT, null, null, 
+				this.mSearchPinList, marker, focusedMarker,
 				org.andnav2.osm.util.constants.OSMConstants.NOT_SET, this);
 		this.mOSMapView.getOverlays().add(this.mItemOverlay);
 		this.mItemOverlay.setAutoFocusItemsOnTap(false);
@@ -664,28 +672,28 @@ public class WhereAmIMap extends OpenStreetMapAndNavBaseActivity implements Pref
 		}
 
 		this.mOSMapView.getController().animateTo(item, AnimationType.MIDDLEPEAKSPEED);
-
 		return true;
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
-        List<Sensor> orient_sensor_list = this.mSensorManager.getSensorList(Sensor.TYPE_ORIENTATION);
-        if (orient_sensor_list.size() < 1) return;
-
-        this.mSensorManager.registerListener(this.mCompassRotateView,  orient_sensor_list.get(0), SensorManager.SENSOR_DELAY_UI);
-        this.mSensorManager.registerListener(this.mIvCompass, orient_sensor_list.get(0), SensorManager.SENSOR_DELAY_UI);
+		List<Sensor> orient_sensor_list = this.mSensorManager.getSensorList(Sensor.TYPE_ORIENTATION);
+		if (orient_sensor_list.size() < 1) return;
+		
+		this.mSensorManager.registerListener(this.mCompassRotateView,  orient_sensor_list.get(0), SensorManager.SENSOR_DELAY_UI);
+		this.mSensorManager.registerListener(this.mIvCompass, orient_sensor_list.get(0), SensorManager.SENSOR_DELAY_UI);
 	}
 
 	@Override
 	protected void onPause() {
-		super.onResume();
-		List<Sensor> orient_sensor_list = this.mSensorManager.getSensorList(Sensor.TYPE_ORIENTATION);
-		if (orient_sensor_list.size() < 1) { super.onPause(); return; }
-		
-		this.mSensorManager.unregisterListener(this.mCompassRotateView,  orient_sensor_list.get(0));
-		this.mSensorManager.unregisterListener(this.mIvCompass, orient_sensor_list.get(0));
+		List<Sensor> sensor_list = this.mSensorManager.getSensorList(Sensor.TYPE_ORIENTATION);
+		if (sensor_list.size() < 1) { 
+			super.onPause();
+			return;
+		}
+		this.mSensorManager.unregisterListener(this.mCompassRotateView);
+		this.mSensorManager.unregisterListener(this.mIvCompass);
 		super.onPause();
 	}
 
