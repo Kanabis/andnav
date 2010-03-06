@@ -6,8 +6,10 @@ GIT_REPOS=../../git_andnav
 help:
 	echo "This makefile is for synchronizing git with svn"
 
-push: ${GIT_REPOS}
-	echo "pushing changes from git to svn"
+fromgit: tosvn
+
+tosvn: ${GIT_REPOS}
+	echo "syncing differences from git to svn"
 	rsync --archive --verbose --update --progress \
 		--filter 'exclude .git' \
 		--filter 'exclude bin/' \
@@ -15,8 +17,10 @@ push: ${GIT_REPOS}
 		--filter 'exclude R.java' \
 		${GIT_REPOS}/ ${SVN_BRANCH}
 
-pull: ${GIT_REPOS}
-	echo "syncing changes between git to svn"
+fromsvn: togit
+
+togit: ${GIT_REPOS}
+	echo "syncing differences from svn to git"
 	rsync --archive --verbose --update --progress \
 		--filter 'exclude .git' \
 		--filter 'exclude .svn' \
