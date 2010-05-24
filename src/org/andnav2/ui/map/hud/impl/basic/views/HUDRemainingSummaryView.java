@@ -68,7 +68,6 @@ public class HUDRemainingSummaryView extends HUDBaseView implements IHUDRemainin
 	// Methods from SuperClass/Interfaces
 	// ===========================================================
 
-	@Override
 	public void recycle() {
 		// Nothing
 	}
@@ -79,25 +78,21 @@ public class HUDRemainingSummaryView extends HUDBaseView implements IHUDRemainin
 		postInvalidate();
 	}
 
-	@Override
 	public void setEstimatedRestSeconds(final int estimatedRestSeconds) {
 		this.mEstimatedRestSeconds = estimatedRestSeconds;
 		postInvalidate();
 	}
 
-	@Override
 	public void setMetersDrivenSession(final int aMetersDriven) {
 		this.mDrivenInSession = (int)(aMetersDriven * this.mUnitSystem.mScaleToMeters);
 		postInvalidate();
 	}
 
-	@Override
 	public void setDataConnectionStrength(final int dataConnectionStrength) {
 		this.mDataConnectionStrength = dataConnectionStrength;
 		postInvalidate();
 	}
 
-	@Override
 	public void setGPSConnectionStrength(final int connectionStrength) {
 		this.mGPSConnectionStrength = connectionStrength;
 		postInvalidate();
@@ -262,7 +257,6 @@ public class HUDRemainingSummaryView extends HUDBaseView implements IHUDRemainin
 		}
 	}
 
-	@Override
 	public void setRemainingSummaryOnClickListener(final OnClickListener pOnClickListener) {
 		this.setOnClickListener(pOnClickListener);
 	}

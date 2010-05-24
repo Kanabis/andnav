@@ -59,7 +59,7 @@ public class SetHomeMap extends OpenStreetMapAndNavBaseActivity {
 	// ===========================================================
 
 	@Override
-	protected void onSetupContentView() {
+	public void onSetupContentView() {
 		this.setContentView(R.layout.sethome_map);
 		super.mOSMapView = (OSMMapView)findViewById(R.id.map_sethome);
 	}
@@ -147,13 +147,11 @@ public class SetHomeMap extends OpenStreetMapAndNavBaseActivity {
 
 	protected void applyZoomButtonListeners(){
 		this.findViewById(R.id.iv_sethome_map_zoomin).setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View v) {
 				SetHomeMap.this.mOSMapView.zoomIn();
 			}
 		});
 		this.findViewById(R.id.iv_sethome_map_zoomout).setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View v) {
 				SetHomeMap.this.mOSMapView.zoomOut();
 			}
@@ -231,7 +229,6 @@ public class SetHomeMap extends OpenStreetMapAndNavBaseActivity {
 			}
 		});
 		this.mOSMapView.setOnTouchListener(new OnTouchListener(){
-			@Override
 			public boolean onTouch(final View v, final MotionEvent ev) {
 				return gd.onTouchEvent(ev);
 			}

@@ -110,7 +110,6 @@ public class Splash extends Activity implements Constants, AdFreeConstants {
 		/* New Handler to start the Menu-Activity
 		 * and close this Splash-Screen after some seconds.*/
 		new Handler().postDelayed(new Runnable(){
-			@Override
 			public void run() {
 				proceedWithGPSEnabledCheck();
 			}

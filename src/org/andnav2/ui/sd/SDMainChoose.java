@@ -105,12 +105,10 @@ public class SDMainChoose extends AndNavBaseActivity {
 		switch(id){
 			case DIALOG_SHOW_LAT_LON:
 				return CommonDialogFactory.createInputLatLonDialog(this, new CommonCallback<GeoPoint>(){
-					@Override
 					public void onSuccess(final GeoPoint result) {
 						navToLatLon(result.getLatitudeE6(), result.getLongitudeE6());
 					}
 
-					@Override
 					public void onFailure(final Throwable t) {
 						Toast.makeText(SDMainChoose.this, R.string.dlg_input_direct_lat_lon_malformed, Toast.LENGTH_SHORT).show();
 					}

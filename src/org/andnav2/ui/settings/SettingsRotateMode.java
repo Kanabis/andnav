@@ -129,7 +129,6 @@ public class SettingsRotateMode extends AndNavBaseActivity {
 					aBuilder.setTitle(R.string.centermode_dd_up_rotatemode_upto_nextturn_mutex_title);
 					aBuilder.setMessage(R.string.centermode_dd_up_rotatemode_upto_nextturn_mutex_message);
 					aBuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener(){
-						@Override
 						public void onClick(final DialogInterface arg0, final int arg1) {
 							Preferences.saveCenterMode(SettingsRotateMode.this, PREF_CENTERMODE_CENTERUSER);
 							Preferences.saveRotateMode(SettingsRotateMode.this, PREF_ROTATEMODE_DRIVINGDIRECTION_UP);
@@ -137,7 +136,6 @@ public class SettingsRotateMode extends AndNavBaseActivity {
 						}
 					});
 					aBuilder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener(){
-						@Override
 						public void onClick(final DialogInterface arg0, final int arg1) {
 							// Nothing to react on here!
 						}

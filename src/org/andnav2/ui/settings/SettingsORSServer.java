@@ -54,10 +54,8 @@ public class SettingsORSServer extends AndNavBaseActivity {
 	private ArrayList<ORSServerItem> mServerItems = new ArrayList<ORSServerItem>();
 
 	private final Runnable mListInvalidationCallback = new Runnable(){
-		@Override
 		public void run() {
 			runOnUiThread(new Runnable(){
-				@Override
 				public void run() {
 					SettingsORSServer.this.mServerList.invalidateViews();
 				}
@@ -124,7 +122,6 @@ public class SettingsORSServer extends AndNavBaseActivity {
 
 	protected void initListView() {
 		this.mServerList.setOnItemClickListener(new OnItemClickListener(){
-			@Override
 			public void onItemClick(final AdapterView<?> parent, final View view, final int position, final long id) {
 				SettingsORSServer.this.mSelectedServerItem = (ORSServerItem)parent.getAdapter().getItem(position);
 				showDialog(DIALOG_SHOW_SERVEROPTIONS);

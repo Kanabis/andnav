@@ -79,22 +79,18 @@ public class SettingsColorscheme extends AndNavBaseActivity{
 		{
 			this.mSeekOverallBrightness.setOnSeekBarChangeListener(new OnSeekBarChangeListener(){
 
-				@Override
 				public void onProgressChanged(final SeekBar seekBar, final int progress, final boolean fromTouch) {
 					setBrightness(progress);
 				}
 
-				@Override
 				public void onStartTrackingTouch(final SeekBar seekBar) { }
 
-				@Override
 				public void onStopTrackingTouch(final SeekBar seekBar) { }
 			});
 		}
 
 		{ // Workaround for false treating of RadioButtons when they are not direct children of RadioGroup
 			this.mRadDayScheme.setOnCheckedChangeListener(new OnCheckedChangeListener(){
-				@Override
 				public void onCheckedChanged(final CompoundButton b, final boolean isChecked) {
 					if(isChecked){
 						setDayScheme();
@@ -102,7 +98,6 @@ public class SettingsColorscheme extends AndNavBaseActivity{
 				}
 			});
 			this.findViewById(R.id.iv_settings_colorscheme_daymode).setOnClickListener(new OnClickListener(){
-				@Override
 				public void onClick(final View v) {
 					setDayScheme();
 					SettingsColorscheme.this.mRadDayScheme.setChecked(true);
@@ -110,7 +105,6 @@ public class SettingsColorscheme extends AndNavBaseActivity{
 			});
 
 			this.mRadDefaultScheme.setOnCheckedChangeListener(new OnCheckedChangeListener(){
-				@Override
 				public void onCheckedChanged(final CompoundButton b, final boolean isChecked) {
 					if(isChecked){
 						setDefaultScheme();
@@ -118,7 +112,6 @@ public class SettingsColorscheme extends AndNavBaseActivity{
 				}
 			});
 			this.findViewById(R.id.iv_settings_colorscheme_default).setOnClickListener(new OnClickListener(){
-				@Override
 				public void onClick(final View v) {
 					setDefaultScheme();
 					SettingsColorscheme.this.mRadDefaultScheme.setChecked(true);
@@ -126,7 +119,6 @@ public class SettingsColorscheme extends AndNavBaseActivity{
 			});
 
 			this.mRadNightScheme.setOnCheckedChangeListener(new OnCheckedChangeListener(){
-				@Override
 				public void onCheckedChanged(final CompoundButton b, final boolean isChecked) {
 					if(isChecked){
 						setNightScheme();
@@ -134,7 +126,6 @@ public class SettingsColorscheme extends AndNavBaseActivity{
 				}
 			});
 			this.findViewById(R.id.iv_settings_colorscheme_nightmode).setOnClickListener(new OnClickListener(){
-				@Override
 				public void onClick(final View v) {
 					setNightScheme();
 					SettingsColorscheme.this.mRadNightScheme.setChecked(true);

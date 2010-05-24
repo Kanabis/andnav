@@ -16,6 +16,7 @@ import org.andnav2.ui.sd.SDPOISearchList;
 import org.andnav2.ui.settings.SettingsMenu;
 import org.andnav2.ui.settings.SettingsSelectHome;
 import org.andnav2.ui.util.Util;
+import org.andnav2.util.BetaExpirationBlocker;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -24,7 +25,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
+//FIXME import android.speech.tts.TextToSpeech;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -74,6 +75,10 @@ public class Menu extends AndNavGPSActivity {
 
 		this.setContentView(R.layout.menu);
 
+//		if(BetaExpirationBlocker.finishWhenExpired(this)) {
+//			return;
+//		}
+
 		this.findViewById(R.id.ibtn_whereami).requestFocus();
 
 		this.applyMenuButtonListeners();
@@ -85,7 +90,7 @@ public class Menu extends AndNavGPSActivity {
 		if(Preferences.showTTSNotInstalledInfo(this)){
 			try{
 				Intent checkIntent = new Intent();
-				checkIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
+				// FIXME checkIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
 				startActivityForResult(checkIntent, REQUESTCODE_TTS_DATA_CHECK_CODE);
 			}catch(Throwable t){
 				
@@ -103,20 +108,17 @@ public class Menu extends AndNavGPSActivity {
 
 	private void applyMenuButtonListeners() {
 		findViewById(R.id.btn_bug).setOnClickListener(new OnClickListener() {
-			@Override
 			public void onClick(final View v) {
 				Util.sendSupportEmail(Menu.this);
 			}
 		});
 		findViewById(R.id.btn_wiki).setOnClickListener(new OnClickListener() {
-			@Override
 			public void onClick(final View v) {
 				final Intent faqWebIntent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("http://wiki.andnav.org"));
 				startActivity(faqWebIntent);
 			}
 		});
 		findViewById(R.id.btn_donate).setOnClickListener(new OnClickListener() {
-			@Override
 			public void onClick(final View v) {
 				final Intent donateIntent = new Intent(Menu.this, Donate.class);
 				startActivityForResult(donateIntent, REQUESTCODE_DONATE);
@@ -279,12 +281,13 @@ public class Menu extends AndNavGPSActivity {
 				}
 				break;
 			case REQUESTCODE_TTS_DATA_CHECK_CODE:
-				if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
-					// success, TTS is available
-				} else {
-					showDialog(DIALOG_SHOW_TTS_INSTALL);
-
-				}
+// FIXME 
+//				if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
+//					// success, TTS is available
+//				} else {
+//					showDialog(DIALOG_SHOW_TTS_INSTALL);
+//
+//				}
 				break;
 		}
 	}
@@ -308,22 +311,19 @@ public class Menu extends AndNavGPSActivity {
 				.setTitle(R.string.tts_not_installed_title)
 				.setIcon(R.drawable.information)
 				.setPositiveButton(R.string.install, new DialogInterface.OnClickListener() {
-					@Override
 					public void onClick(DialogInterface pDialog, int pWhich) {
 						// missing data, install it
 						Intent installIntent = new Intent();
-						installIntent.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
+						// FIXME installIntent.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
 						startActivity(installIntent);
 					}
 				})
 				.setNeutralButton(R.string.cancel, new DialogInterface.OnClickListener(){
-					@Override
 					public void onClick(final DialogInterface d, final int which) {
 						d.dismiss();
 					}
 				})
 				.setNegativeButton(R.string.nevershowagain, new DialogInterface.OnClickListener(){
-					@Override
 					public void onClick(final DialogInterface d, final int which) {
 						d.dismiss();
 						Preferences.saveShowTTSNotInstalledInfo(Menu.this, false);

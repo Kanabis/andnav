@@ -98,7 +98,6 @@ public class SettingsDirectionLanguage extends AndNavBaseActivity {
 					@Override
 					public void onSuccess(final DirectionsLanguage result) {
 						runOnUiThread(new Runnable(){
-							@Override
 							public void run(){
 								final int dialectNameResID = result.NAMERESID;
 								final boolean isDialect = dialectNameResID == R.string.dialect_none;
@@ -154,7 +153,6 @@ public class SettingsDirectionLanguage extends AndNavBaseActivity {
 	protected void applyGridViewListeners() {
 		/* Apply OnItemClickListener to show the country + "saved" in the quickinfo. */
 		this.mcountryListView.setOnItemClickListener(new OnItemClickListener(){
-			@Override
 			public void onItemClick(final AdapterView<?> arg0, final View v, final int position, final long arg3) {
 				if(v != null){
 					final Country nat = ((CountryAdapter)SettingsDirectionLanguage.this.mcountryListView.getAdapter()).getItem(position);
@@ -180,7 +178,6 @@ public class SettingsDirectionLanguage extends AndNavBaseActivity {
 
 		/* Apply OnItemSelectedListener to show Country-Name in TextView. */
 		this.mcountryListView.setOnItemSelectedListener(new OnItemSelectedListener(){
-			@Override
 			public void onItemSelected(final AdapterView<?> parent, final View v, final int position, final long id) {
 				if(v != null){
 					final Country selNation = ((CountryAdapter)SettingsDirectionLanguage.this.mcountryListView.getAdapter()).getItem(position);
@@ -192,7 +189,6 @@ public class SettingsDirectionLanguage extends AndNavBaseActivity {
 				}
 			}
 
-			@Override
 			public void onNothingSelected(final AdapterView<?> arg0) {
 				SettingsDirectionLanguage.this.mTvQuickInfo.setText(getString(Preferences.getDrivingDirectionsLanguage(SettingsDirectionLanguage.this).NAMERESID)
 						+ " " + getString(R.string.tv_settings_directionslanguage_quickinfo_current_appendix));

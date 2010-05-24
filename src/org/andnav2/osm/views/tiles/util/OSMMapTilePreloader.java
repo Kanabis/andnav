@@ -98,7 +98,6 @@ public class OSMMapTilePreloader implements OSMConstants, OSMMapViewConstants {
 		};
 
 		new Thread(new Runnable(){
-			@Override
 			public void run() {
 				for(int i = 0; i < pTiles.length; i++){
 					final OSMTileInfo[] tileSet = pTiles[i];
@@ -149,7 +148,6 @@ public class OSMMapTilePreloader implements OSMConstants, OSMMapViewConstants {
 		};
 
 		new Thread(new Runnable(){
-			@Override
 			public void run() {
 				for (final OSMTileInfo tile : pTiles) {
 					if(!pTileManager.preloadMaptileAsync(tile, h)) {
@@ -190,7 +188,6 @@ public class OSMMapTilePreloader implements OSMConstants, OSMMapViewConstants {
 
 		/* We need only unique MapTile-indices, so we use a Set. */
 		final Set<ValuePair> needed = new TreeSet<ValuePair>(new Comparator<ValuePair>(){
-			@Override
 			public int compare(final ValuePair a, final ValuePair b) {
 				return a.compareTo(b);
 			}
@@ -198,14 +195,12 @@ public class OSMMapTilePreloader implements OSMConstants, OSMMapViewConstants {
 
 		/* Contains the values of a single line. */
 		final Set<ValuePair> rasterLine = new TreeSet<ValuePair>(new Comparator<ValuePair>(){
-			@Override
 			public int compare(final ValuePair a, final ValuePair b) {
 				return a.compareTo(b);
 			}
 		});
 
 		final PixelSetter rasterLinePixelSetter = new PixelSetter(){
-			@Override
 			public void setPixel(final int x, final int y) {
 				rasterLine.add(new ValuePair(x,y));
 			}

@@ -2,8 +2,6 @@
 package org.andnav2.sound.tts;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager.NameNotFoundException;
 
 
 public class Util {
@@ -35,12 +33,12 @@ public class Util {
 //		if(!TextToSpeech.isInstalled(ctx)){
 //			return false;
 //		}else{
-			try {
-				final Intent intent = new Intent(ctx.createPackageContext("com.google.tts", 0), com.google.tts.ConfigurationManager.class);
-				ctx.startActivity(intent);
-			} catch (final NameNotFoundException e) {
-				// TTS.installed would have returned false in this case
-			}
+//			try {
+//				final Intent intent = new Intent(ctx.createPackageContext("com.google.tts", 0), com.google.tts.ConfigurationManager.class);
+//				ctx.startActivity(intent);
+//			} catch (final NameNotFoundException e) {
+//				// TTS.installed would have returned false in this case
+//			}
 			return true;
 //		}
 	}

@@ -65,7 +65,7 @@ public class RouteRecorder implements OSMConstants, Parcelable {
 	}
 
 	public void add(final AndNavLocation aLocation) {
-		/* TODO Hier sind mehr infos möglich! */
+		/* TODO Hier sind mehr infos mï¿½glich! */
 		this.mRecords.add(new GPSGeoLocation(
 				aLocation.getLatitudeE6(),
 				aLocation.getLongitudeE6(),
@@ -91,12 +91,10 @@ public class RouteRecorder implements OSMConstants, Parcelable {
 		}
 	};
 
-	@Override
 	public int describeContents() {
 		return 0;
 	}
 
-	@Override
 	public void writeToParcel(final Parcel out, final int arg1) {
 		out.writeTypedList(this.mRecords);
 	}

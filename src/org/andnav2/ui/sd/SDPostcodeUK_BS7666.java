@@ -88,8 +88,6 @@ public class SDPostcodeUK_BS7666 extends AndNavBaseActivity {
 		this.postcodeEditText_2 = (EditText) findViewById(R.id.et_sd_postcode_uk_bs_7666_codeentered_2);
 		this.lastFocusedPostcodeEditText = this.postcodeEditText_1;
 		final OnFocusChangeListener lis = new OnFocusChangeListener() {
-
-			@Override
 			public void onFocusChange(final View v, final boolean hasFocus) {
 				SDPostcodeUK_BS7666.this.lastFocusedPostcodeEditText = (EditText) v;
 			}
@@ -170,8 +168,6 @@ public class SDPostcodeUK_BS7666 extends AndNavBaseActivity {
 											postCode, matchedPostcode)).setPositiveButton(
 													R.string.sd_postcode_bs_7666_correct,
 													new DialogInterface.OnClickListener() {
-
-														@Override
 														public void onClick(final DialogInterface d, final int which) {
 															d.dismiss();
 															final String[] parts = matchedPostcode.split(" ");
@@ -184,7 +180,6 @@ public class SDPostcodeUK_BS7666 extends AndNavBaseActivity {
 													}).setNeutralButton(R.string.proceed,
 															new DialogInterface.OnClickListener() {
 
-														@Override
 														public void onClick(final DialogInterface d, final int which) {
 															d.dismiss();
 															checkFormat(true);
@@ -192,7 +187,6 @@ public class SDPostcodeUK_BS7666 extends AndNavBaseActivity {
 													}).setNegativeButton(R.string.cancel,
 															new DialogInterface.OnClickListener() {
 
-														@Override
 														public void onClick(final DialogInterface d, final int which) {
 															d.dismiss();
 														}
@@ -208,14 +202,12 @@ public class SDPostcodeUK_BS7666 extends AndNavBaseActivity {
 				getString(R.string.please_wait_a_moment)); // TODO i18n
 		new Thread(new Runnable() {
 
-			@Override
 			public void run() {
 				try {
 					final GeocodedAddress g = new Requester().request(useItPostCode);
 
 					runOnUiThread(new Runnable() {
 
-						@Override
 						public void run() {
 							if (g == null) {
 								Toast.makeText(SDPostcodeUK_BS7666.this,
@@ -234,7 +226,6 @@ public class SDPostcodeUK_BS7666 extends AndNavBaseActivity {
 																R.string.sd_postcode_bs_7666_use_closes_match,
 																new DialogInterface.OnClickListener() {
 
-																	@Override
 																	public void onClick(final DialogInterface d, final int which) {
 																		d.dismiss();
 																		advanceToNextScreen(g);
@@ -242,7 +233,6 @@ public class SDPostcodeUK_BS7666 extends AndNavBaseActivity {
 																}).setNegativeButton(R.string.cancel,
 																		new DialogInterface.OnClickListener() {
 
-																	@Override
 																	public void onClick(final DialogInterface d, final int which) {
 																		d.dismiss();
 																	}
@@ -258,8 +248,6 @@ public class SDPostcodeUK_BS7666 extends AndNavBaseActivity {
 
 				} catch (final Exception e) {
 					runOnUiThread(new Runnable() {
-
-						@Override
 						public void run() {
 							Toast.makeText(SDPostcodeUK_BS7666.this,
 									"Postcode not in database :( ", Toast.LENGTH_LONG).show();
@@ -409,8 +397,6 @@ public class SDPostcodeUK_BS7666 extends AndNavBaseActivity {
 	 */
 	protected void applyKeyPadGridOnItemClickListener() {
 		this.keyBoardGrid.setOnItemClickListener(new OnItemClickListener() {
-
-			@Override
 			public void onItemClick(final AdapterView<?> arg0, final View v, final int arg2, final long arg3) {
 				/* Extract the Caption of the Button. */
 				final String theCaption = ((Button) v).getText().toString();
@@ -422,8 +408,6 @@ public class SDPostcodeUK_BS7666 extends AndNavBaseActivity {
 	protected void applyOkButtonListener() {
 		/* Set OnClickListener for OK-Button. */
 		findViewById(R.id.btn_sd_postcode_uk_bs_7666_ok).setOnClickListener(new OnClickListener() {
-
-			@Override
 			public void onClick(final View v) {
 				SDPostcodeUK_BS7666.this.checkFormat(false);
 			}
@@ -482,8 +466,6 @@ public class SDPostcodeUK_BS7666 extends AndNavBaseActivity {
 	 * Listener will get called on actual CLICKS to the BUTTONS!
 	 */
 	protected OnClickListener mGridButtonListener = new OnClickListener() {
-
-		@Override
 		public void onClick(final View v) {
 			/* Extract the Caption of the Button. */
 			final String theCaption = ((Button) v).getText().toString();

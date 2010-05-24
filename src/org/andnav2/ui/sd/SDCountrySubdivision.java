@@ -119,7 +119,6 @@ public class SDCountrySubdivision extends AndNavBaseActivity {
 		}
 
 		ibtn_mostrecent.setOnClickListener(new OnClickListener() {
-			@Override
 			public void onClick(final View v) {
 				final ICountrySubdivision n = SDCountrySubdivision.this.mostRecentSubdivision;
 				if (n != null) {
@@ -180,7 +179,6 @@ public class SDCountrySubdivision extends AndNavBaseActivity {
 	protected void applyGridViewListeners() {
 		/* Apply OnItemClickListener to advance to the next screen(Zip-entry). */
 		this.countrySubdivisionList.setOnItemClickListener(new OnItemClickListener() {
-			@Override
 			public void onItemClick(final AdapterView<?> arg0, final View v, final int position, final long id) {
 				if (v != null) {
 					/* Extract the Country out of the FlagView. */

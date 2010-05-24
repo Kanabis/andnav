@@ -167,12 +167,10 @@ public class Polygon extends AreaOfInterest {
 		}
 	};
 
-	@Override
 	public int describeContents() {
 		return 0;
 	}
 
-	@Override
 	public void writeToParcel(final Parcel out, final int arg1) {
 		out.writeTypedList(this.mExterior);
 

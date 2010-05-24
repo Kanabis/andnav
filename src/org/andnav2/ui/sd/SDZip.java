@@ -182,7 +182,6 @@ public class SDZip extends AndNavBaseActivity {
 	 * which calls handleButtonClick(String caption).*/
 	protected void applyNumberPadGridOnItemClickListener() {
 		this.keyBoardGrid.setOnItemClickListener(new OnItemClickListener(){
-			@Override
 			public void onItemClick(final AdapterView<?> arg0, final View v, final int arg2, final long arg3) {
 				/* Extract the Caption of the Button. */
 				final String theCaption = ((Button)v).getText().toString();
@@ -194,7 +193,6 @@ public class SDZip extends AndNavBaseActivity {
 	protected void applyOkButtonListener() {
 		/* Set OnClickListener for OK-Button. */
 		findViewById(R.id.btn_sd_zip_ok).setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(final View v) {
 				SDZip.this.advanceToNextScreen();
 			}
@@ -204,7 +202,6 @@ public class SDZip extends AndNavBaseActivity {
 	protected void applyTopButtonListeners() {
 
 		this.zipCodeEditText.setOnKeyListener(new OnKeyListener(){
-			@Override
 			public boolean onKey(final View arg0, final int arg1, final KeyEvent ke) {
 				if(ke.getAction() == KeyEvent.ACTION_DOWN){
 					if(SDZip.super.mMenuVoiceEnabled){
@@ -271,7 +268,6 @@ public class SDZip extends AndNavBaseActivity {
 	 * advance to the next screen(Street-entry).
 	 * This Listener will get called on actual CLICKS to the BUTTONS! */
 	protected OnClickListener mGridButtonListener = new OnClickListener() {
-		@Override
 		public void onClick(final View v) {
 			/* Extract the Caption of the Button. */
 			final String theCaption = ((Button)v).getText().toString();

@@ -203,7 +203,9 @@ public class Preferences implements Constants, PreferenceConstants {
 	 * @param nat Nationality to be saved and used by the whole application. */
 	public static void saveDrivingDirectionsLanguage(final Context ctx, final DirectionsLanguage nat){
 		final boolean isDialect = nat.NAMERESID == R.string.dialect_none;
-		if(isDialect){
+		if(isDialect && Constants.LITEVERSION){
+			Toast.makeText(ctx, R.string.toast_get_pro_version, Toast.LENGTH_SHORT).show();
+		}else{
 			getEditorInstance(ctx).putString(PREF_DRIVINGDIRECTIONSLANGUAGE_ID, nat.ID).commit();
 		}
 	}
@@ -657,27 +659,6 @@ public class Preferences implements Constants, PreferenceConstants {
 		return getInstance(ctx).getString(PREF_OSMACCOUNT_PASSWORD_ID, PREF_OSMACCOUNT_PASSWORD_DEFAULT);
 	}
 
-
-	// ===========================================================
-	// TrailmappingAccount-Data
-	// ===========================================================
-
-	public static void saveTrailmappingAccountUsername(final Context ctx, final String aUsername) {
-		getEditorInstance(ctx).putString(PREF_TRAILMAPPINGACCOUNT_USERNAME_ID, aUsername).commit();
-	}
-
-	public static String getTrailmappingUsername(final Context ctx) {
-		return getInstance(ctx).getString(PREF_TRAILMAPPINGACCOUNT_USERNAME_ID, PREF_TRAILMAPPINGACCOUNT_USERNAME_DEFAULT);
-	}
-
-	public static void saveTrailmappingAccountPassword(final Context ctx, final String aUsername) {
-		getEditorInstance(ctx).putString(PREF_TRAILMAPPINGACCOUNT_PASSWORD_ID, aUsername).commit();
-	}
-
-	public static String getTrailmappingPassword(final Context ctx) {
-		return getInstance(ctx).getString(PREF_TRAILMAPPINGACCOUNT_PASSWORD_ID, PREF_TRAILMAPPINGACCOUNT_PASSWORD_DEFAULT);
-	}
-
 	// ===========================================================
 	// OSBCommentername
 	// ===========================================================
@@ -851,14 +832,6 @@ public class Preferences implements Constants, PreferenceConstants {
 		getEditorInstance(ctx).putBoolean(PREF_TRACEPOLICY_OSM_ID, pEnabled).commit();
 	}
 
-	public static boolean getTracePolicyTrailmapping(final Context ctx) {
-		return getInstance(ctx).getBoolean(PREF_TRACEPOLICY_TRAILMAPPING_ID, PREF_TRACEPOLICY_TRAILMAPPING_DEFAULT);
-	}
-
-	public static void saveTracePolicyTrailmapping(final Context ctx, final boolean pEnabled){
-		getEditorInstance(ctx).putBoolean(PREF_TRACEPOLICY_TRAILMAPPING_ID, pEnabled).commit();
-	}
-
 	// ===========================================================
 	// TTS
 	// ===========================================================
@@ -979,10 +952,15 @@ public class Preferences implements Constants, PreferenceConstants {
 	}
 
 	public static void saveHUDImpl(final Context ctx, final IHUDImpl pHUDImpl, final int pVariationID){
-		getEditorInstance(ctx)
-		.putInt(PREF_HUDID_ID, pHUDImpl.getID())
-		.putInt(PREF_HUDVARIATIONID_ID, pVariationID)
-		.commit();
+		/* LITEVERSION */
+		if(Constants.LITEVERSION && pHUDImpl.getID() != BasicHUDImpl.ID){
+			Toast.makeText(ctx, R.string.toast_get_pro_version, Toast.LENGTH_SHORT).show();
+		}else{
+			getEditorInstance(ctx)
+			.putInt(PREF_HUDID_ID, pHUDImpl.getID())
+			.putInt(PREF_HUDVARIATIONID_ID, pVariationID)
+			.commit();
+		}
 	}
 
 	public static DirectionArrowDescriptor getHUDImplVariationDirectionArrowDescriptor(final Context ctx){

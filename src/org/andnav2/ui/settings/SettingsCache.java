@@ -105,18 +105,15 @@ public class SettingsCache extends AndNavBaseActivity {
 		}
 
 		this.mMaxSizeChangeListener = new OnSeekBarChangeListener(){
-			@Override
 			public void onProgressChanged(final SeekBar seekBar, final int progress, final boolean fromTouch) {
 				Preferences.saveMaxCacheSize(SettingsCache.this, SettingsCache.this.mFilesystemCachePolicy, progress + 1);
 				updateCurrentSizeText();
 			}
 
-			@Override
 			public void onStartTrackingTouch(final SeekBar seekBar) {
 				// Nothing...
 			}
 
-			@Override
 			public void onStopTrackingTouch(final SeekBar seekBar) {
 				// Nothing...
 			}
@@ -193,14 +190,12 @@ public class SettingsCache extends AndNavBaseActivity {
 						.setTitle(R.string.settings_cache_clear_external_warning_title)
 						.setMessage(R.string.settings_cache_clear_external_warning_message)
 						.setPositiveButton(R.string.proceed, new DialogInterface.OnClickListener(){
-							@Override
 							public void onClick(final DialogInterface d, final int which) {
 								d.dismiss();
 								doClearCache();
 							}
 						})
 						.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener(){
-							@Override
 							public void onClick(final DialogInterface d, final int which) {
 								d.dismiss();
 							}
@@ -267,11 +262,9 @@ public class SettingsCache extends AndNavBaseActivity {
 				if(maxCacheSize < aMBytes){
 					final ProgressDialog pd = ProgressDialog.show(SettingsCache.this, getString(R.string.pdg_settings_cache_clear_cache_message), getString(R.string.pdg_settings_cache_clear_cache_title), true);
 					new Thread(new Runnable(){
-						@Override
 						public void run() {
 							SettingsCache.this.mFSTileProvider.cutCurrentFSCacheBy((int)(1024 * 1024 * (aMBytes - maxCacheSize)));
 							runOnUiThread(new Runnable(){
-								@Override
 								public void run() {
 									updateCurrentSizeText();
 									pd.dismiss();
@@ -294,7 +287,6 @@ public class SettingsCache extends AndNavBaseActivity {
 				.setTitle(R.string.instructions)
 				.setMessage(R.string.tv_settings_cache_quickinfo_default_caption)
 				.setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener(){
-					@Override
 					public void onClick(final DialogInterface d, final int which) {
 						d.dismiss();
 					}
@@ -306,11 +298,9 @@ public class SettingsCache extends AndNavBaseActivity {
 	private void doClearCache() {
 		final ProgressDialog pd = ProgressDialog.show(SettingsCache.this, getString(R.string.pdg_settings_cache_clear_cache_message), getString(R.string.pdg_settings_cache_clear_cache_title), true);
 		new Thread(new Runnable(){
-			@Override
 			public void run() {
 				SettingsCache.this.mFSTileProvider.clearCurrentFSCache();
 				runOnUiThread(new Runnable(){
-					@Override
 					public void run() {
 						// TODO Add warning, if SD-Card needs to be formatted. Inform that using the PC would be much more efficient!
 						updateCurrentSizeText();

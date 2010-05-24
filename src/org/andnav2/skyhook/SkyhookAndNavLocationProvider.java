@@ -66,7 +66,6 @@ public class SkyhookAndNavLocationProvider extends AbstractAndNavLocationProvide
 			final String tilingPath = Util.getAndNavExternalStoragePath() + OSMConstants.SDCARD_SKYHOOKCACHE_PATH;
 			new File(tilingPath).mkdirs();
 			this.mXPS.setTiling(tilingPath, 200 * 1024, 1000 * 1024, new TilingListener(){
-				@Override
 				public WPSContinuation tilingCallback(final int tileNumber, final int tileTotal) {
 					return WPSContinuation.WPS_CONTINUE;
 				}
@@ -160,19 +159,16 @@ public class SkyhookAndNavLocationProvider extends AbstractAndNavLocationProvide
 	 * @author plusminus
 	 */
 	private class MyLocationCallback implements WPSPeriodicLocationCallback {
-		@Override
 		public WPSContinuation handleWPSPeriodicLocation(final WPSLocation location) {
 			SkyhookAndNavLocationProvider.this.mXPSHandler.sendMessage(SkyhookAndNavLocationProvider.this.mXPSHandler.obtainMessage(WPSLOCATION_MESSAGE, location));
 			return WPSContinuation.WPS_CONTINUE;
 		}
-
-		@Override
+		
 		public void done() {
 			// tell the UI thread to re-enable the buttons
 			SkyhookAndNavLocationProvider.this.mXPSHandler.sendMessage(SkyhookAndNavLocationProvider.this.mXPSHandler.obtainMessage(DONE_MESSAGE));
 		}
 
-		@Override
 		public WPSContinuation handleError(final WPSReturnCode error) {
 			switch(error){
 				//					return WPSContinuation.WPS_STOP; // TODO Temporary solution until WiFi-Issues are solved.

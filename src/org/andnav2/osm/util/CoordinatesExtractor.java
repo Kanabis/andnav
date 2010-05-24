@@ -20,7 +20,6 @@ public class CoordinatesExtractor {
 		new Extractor(
 				Pattern.compile("^\\s*\\-?[0-9]+\\.[0-9]+\\s*\\-?[0-9]+\\.[0-9]+\\s*$"),
 				new ExtractorMethod(){
-					@Override
 					public GeoPoint extract(final String in) {
 						final StringTokenizer st = new StringTokenizer(in, " ");
 
@@ -36,7 +35,6 @@ public class CoordinatesExtractor {
 				new Extractor(
 						Pattern.compile("^\\s*\\-?[0-9]+\\.[0-9]+\\s*,\\s*\\-?[0-9]+\\.[0-9]+\\s*$"),
 						new ExtractorMethod(){
-							@Override
 							public GeoPoint extract(final String in) {
 								final StringTokenizer st = new StringTokenizer(in, ", ");
 
@@ -52,7 +50,6 @@ public class CoordinatesExtractor {
 						new Extractor(
 								Pattern.compile("^\\s*\\-?[0-9]+,[0-9]+\\s*\\-?[0-9]+\\,[0-9]+\\s*$"),
 								new ExtractorMethod(){
-									@Override
 									public GeoPoint extract(final String in) {
 										final StringTokenizer st = new StringTokenizer(in, " ");
 

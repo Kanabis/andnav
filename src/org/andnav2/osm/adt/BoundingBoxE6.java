@@ -381,12 +381,10 @@ public class BoundingBoxE6 implements Parcelable, OSMMapViewConstants, OSMConsta
 		}
 	};
 
-	@Override
 	public int describeContents() {
 		return 0;
 	}
 
-	@Override
 	public void writeToParcel(final Parcel out, final int arg1) {
 		out.writeInt(this.mLatNorthE6);
 		out.writeInt(this.mLonEastE6);

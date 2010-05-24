@@ -98,13 +98,12 @@ public class WaypointOptimizer {
 			throw new IllegalArgumentException();
 		}
 
-		/* As only ordering is important, no SQRT needs to be taken. */
 		long out = start.distanceTo(waypoints.get(p[0]));
 		out += end.distanceTo(waypoints.get(p[waypoints.size() - 1]));
 		for(int i = 0; i < p.length - 1; i++) {
 			out += waypoints.get(p[i]).distanceTo(waypoints.get(p[i+1]));
 		}
-
+		
 		return out;
 	}
 

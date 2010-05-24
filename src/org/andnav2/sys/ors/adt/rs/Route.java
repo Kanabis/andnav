@@ -354,12 +354,10 @@ public class Route implements Parcelable{
 		}
 	};
 
-	@Override
 	public int describeContents() {
 		return 0;
 	}
 
-	@Override
 	public void writeToParcel(final Parcel out, final int flags) {
 		out.writeInt(this.mDurationSeconds);
 		out.writeString(this.mDurationTextual);

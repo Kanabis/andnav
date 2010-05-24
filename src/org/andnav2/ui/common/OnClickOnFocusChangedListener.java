@@ -55,7 +55,6 @@ public abstract class OnClickOnFocusChangedListener implements OnClickListener, 
 
 	public abstract void onClicked(View me);
 
-	@Override
 	public void onClick(final View me) {
 		final long dif = System.currentTimeMillis() - this.mFocusLostOn;
 		this.onBoth(me, dif > 250); // TODO This sucks, maybe: loosing focus onClick is a bug ?
@@ -64,7 +63,6 @@ public abstract class OnClickOnFocusChangedListener implements OnClickListener, 
 
 	public abstract void onFocusChanged(View me, boolean focused);
 
-	@Override
 	public void onFocusChange(final View me, final boolean focused) {
 		if(!focused) {
 			this.mFocusLostOn = System.currentTimeMillis();

@@ -122,7 +122,6 @@ public class SDCountry extends AndNavBaseActivity {
 		}
 
 		ibtn_mostrecent.setOnClickListener(new OnClickListener() {
-			@Override
 			public void onClick(final View v) {
 				final Country n = SDCountry.this.mostRecentNation;
 				if (n != null) {
@@ -184,7 +183,6 @@ public class SDCountry extends AndNavBaseActivity {
 		/* Apply OnItemClickListener to advance to the next screen(Zip-entry). */
 		this.mCountryList.setOnItemClickListener(new OnItemClickListener() {
 
-			@Override
 			public void onItemClick(final AdapterView<?> arg0, final View v, final int position, final long id) {
 				if (v != null) {
 					/* Extract the Country out of the FlagView. */

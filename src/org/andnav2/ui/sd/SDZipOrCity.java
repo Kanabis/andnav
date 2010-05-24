@@ -122,7 +122,6 @@ public class SDZipOrCity extends AndNavBaseActivity {
 		}
 
 		ibtn_mostrecent.setOnClickListener(new OnClickListener() {
-			@Override
 			public void onClick(final View v) {
 				SDZipOrCity.this.bundleCreatedWith.putParcelable(EXTRAS_COUNTRY_ID, SDZipOrCity.this.mostRecentCountry);
 				final Intent countryIntent = new Intent(SDZipOrCity.this, SDCountry.class);

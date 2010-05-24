@@ -9,15 +9,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
+import android.hardware.SensorListener;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 
 
-public class CompassImageView extends ImageView implements SensorEventListener, Constants {
+public class CompassImageView extends ImageView implements SensorListener, Constants {
 
 	// ===========================================================
 	// Constants
@@ -50,9 +48,8 @@ public class CompassImageView extends ImageView implements SensorEventListener, 
 	// Methods from SuperClass/Interfaces
 	// ===========================================================
 
-	@Override
-	public void onSensorChanged(final SensorEvent event) {
-		this.mRotationDegree = -event.values[0];
+	public void onSensorChanged(final int sensor, final float[] values) {
+		this.mRotationDegree = -values[0];
 		if(this.getVisibility() == View.VISIBLE) {
 			this.invalidate();
 		}
@@ -75,8 +72,7 @@ public class CompassImageView extends ImageView implements SensorEventListener, 
 		}
 	}
 
-	@Override
-	public void onAccuracyChanged(final Sensor sensor, final int accuracy) {
+	public void onAccuracyChanged(final int arg0, final int arg1) {
 		// TODO ...
 	}
 

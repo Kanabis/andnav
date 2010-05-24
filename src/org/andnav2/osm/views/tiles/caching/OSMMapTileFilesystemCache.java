@@ -236,7 +236,6 @@ public class OSMMapTileFilesystemCache extends AbstractOSMMapTileFilesystemCache
 		this.mPendingDirty.add(aSaveableTileURLString);
 
 		this.mThreadPool.execute(new Runnable(){
-			@Override
 			public void run() {
 				Process.setThreadPriority(Process.THREAD_PRIORITY_LESS_FAVORABLE);
 				try {
@@ -331,7 +330,6 @@ public class OSMMapTileFilesystemCache extends AbstractOSMMapTileFilesystemCache
 		this.mPending.add(aSaveableTileURLString);
 
 		this.mThreadPool.execute(new Runnable(){
-			@Override
 			public void run() {
 				Process.setThreadPriority(Process.THREAD_PRIORITY_LESS_FAVORABLE);
 				try {

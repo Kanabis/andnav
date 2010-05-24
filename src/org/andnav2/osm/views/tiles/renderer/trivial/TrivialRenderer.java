@@ -155,7 +155,6 @@ public class TrivialRenderer implements IOSMRenderer, Constants, OSMConstants {
 	// Methods from SuperClass/Interfaces
 	// ===========================================================
 
-	@Override
 	public Bitmap renderTile(final OSMTileInfo pTileInfo) {
 		final Bitmap out = Bitmap.createBitmap(256, 256, Config.ARGB_4444);
 		final BoundingBoxE6 bbE6 = Util.getBoundingBoxFromMapTile(pTileInfo);
@@ -217,7 +216,6 @@ public class TrivialRenderer implements IOSMRenderer, Constants, OSMConstants {
 		return out;
 	}
 
-	@Override
 	public void release() {
 		// Noting
 	}

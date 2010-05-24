@@ -41,17 +41,14 @@ public class ListBackedQuadTreeOrganizer<T extends IGeoPoint> implements ISpatia
 	// Getter & Setter
 	// ===========================================================
 
-	@Override
 	public boolean isIndexBuilt() {
 		return true;
 	}
 
-	@Override
 	public List<T> getItems() {
 		return this.mFeatureList;
 	}
 
-	@Override
 	public void add(final T pItem) {
 		if(pItem != null){
 			this.mQuadTree.put(pItem.getLatitudeE6(), pItem.getLongitudeE6(), pItem);
@@ -59,7 +56,6 @@ public class ListBackedQuadTreeOrganizer<T extends IGeoPoint> implements ISpatia
 		}
 	}
 
-	@Override
 	public void addAll(final Collection<T> pItems){
 		if(pItems != null) {
 			for(final T item : pItems) {
@@ -76,23 +72,19 @@ public class ListBackedQuadTreeOrganizer<T extends IGeoPoint> implements ISpatia
 	// Methods
 	// ===========================================================
 
-	@Override
 	public void clearIndex(){
 		this.mFeatureList.clear();
 		this.mQuadTree.clear();
 	}
 
-	@Override
 	public void buildIndex(){
 		/* Index is always built. */
 	}
 
-	@Override
 	public List<T> getClosest(final IGeoPoint pGeoPoint, final int pCount){
 		throw new IllegalStateException("Wrong method!");
 	}
 
-	@Override
 	public List<T> getWithinBoundingBox(final BoundingBoxE6 pBoundingBoxE6, final int count) {
 		final List<T> out = this.mQuadTree.get(pBoundingBoxE6.getLatNorthE6(),
 				pBoundingBoxE6.getLonWestE6(),
@@ -102,7 +94,6 @@ public class ListBackedQuadTreeOrganizer<T extends IGeoPoint> implements ISpatia
 		return out;
 	}
 
-	@Override
 	public GetMode getGetMode() {
 		return GetMode.BOUNDINGBOX;
 	}

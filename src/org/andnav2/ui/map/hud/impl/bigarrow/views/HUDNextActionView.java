@@ -62,48 +62,39 @@ public class HUDNextActionView extends LinearLayout implements IHUDNextActionVie
 	// Methods from SuperClass/Interfaces
 	// ===========================================================
 
-	@Override
 	public void setNextActionOnClickListener(final OnClickListener pOnClickListener) {
 		this.setOnClickListener(pOnClickListener);
 	}
 
-	@Override
 	public void setCurrentMeterSpeed(final float aMeterSpeed) {
 		final int currentSpeed = (int)(aMeterSpeed * this.mUnitSystem.mScaleToMetersPerSecond);
 		this.mTvTurnDistance.setText(currentSpeed + this.mUnitSystem.mAbbrKilometersPerHourScale);
 	}
 
-	@Override
 	public void setTurnAngle(final float angle) {
 		this.mIvTurnAngle.setImageResource(getArrowResourceIDFromAngle((int)angle));
 	}
 
-	@Override
 	public void showTargetReached() {
 		this.mIvTurnAngle.setImageResource(R.drawable.flag_destination_big);
 	}
 
-	@Override
 	public void onClick() {
 		/* Nothing */
 	}
 
-	@Override
 	public void recycle() {
 		/* Nothing. */
 	}
 
-	@Override
 	public void reset() {
 		this.mTvTurnDistance.setText("");
 	}
 
-	@Override
 	public void setDisplayQuality(final int displayQuality) {
 		/* Nothing as we are using common views. */
 	}
 
-	@Override
 	public void setDistance(final int pMeterDistance) {
 		if(pMeterDistance != Constants.NOT_SET){
 			final String[] values = this.mUnitSystem.getDistanceString(pMeterDistance, null);
@@ -111,7 +102,6 @@ public class HUDNextActionView extends LinearLayout implements IHUDNextActionVie
 		}
 	}
 
-	@Override
 	public void setUnitSystem(final UnitSystem pUnitSystem) {
 		this.mUnitSystem  = pUnitSystem;
 	}

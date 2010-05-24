@@ -863,31 +863,25 @@ public class OSMMapView extends View implements OSMConstants, OSMMapViewConstant
 	}
 
 	private class OpenStreetMapViewGestureDetectorListener implements OnGestureListener{
-		@Override
 		public boolean onDown(final MotionEvent e) {
 			return false;
 		}
 
-		@Override
 		public boolean onFling(final MotionEvent e1, final MotionEvent e2, final float velocityX, final float velocityY) {
 			// TODO Could be used for smoothly 'fling-out' the map on a fast motion.
 			return false;
 		}
 
-		@Override
 		public void onLongPress(final MotionEvent e) {
 			OSMMapView.this.onLongPress(e);
 		}
 
-		@Override
 		public boolean onScroll(final MotionEvent e1, final MotionEvent e2, final float distanceX, final float distanceY) {
 			return false;
 		}
 
-		@Override
 		public void onShowPress(final MotionEvent e) { }
 
-		@Override
 		public boolean onSingleTapUp(final MotionEvent e) {
 			return OSMMapView.this.onSingleTapUp(e);
 		}

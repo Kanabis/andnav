@@ -74,7 +74,7 @@ public enum OSMMapTileProviderInfo {
 			OSMMapTileProviderType.DOWNLOAD_PROVIDER,
 			true,
 	"cloudmade"),
-	OPENPISTEMAP("http://tiles.openpistemap.org/contours/",
+	OPENPISTEMAP("http://openpistemap.org/tiles/contours/",
 			"OpenPisteMap",
 			"Emphasizes ski-pists",
 			".png",

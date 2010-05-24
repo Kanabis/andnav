@@ -49,7 +49,6 @@ public class DowntimeManager implements Constants, TimeConstants {
 
 	public static void requestDowntimesAsync(final Context ctx){
 		new Thread(new Runnable(){
-			@Override
 			public void run() {
 				try {
 					/* Load sort and filter the downtimes from the server. */

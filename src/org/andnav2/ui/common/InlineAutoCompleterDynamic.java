@@ -45,9 +45,6 @@ public abstract class InlineAutoCompleterDynamic implements OnKeyListener, TextW
 	// Methods from SuperClass/Interfaces
 	// ===========================================================
 
-
-
-	@Override
 	public boolean onKey(final View arg0, final int arg1, final KeyEvent ke) {
 		if(ke.getAction() == KeyEvent.ACTION_DOWN){
 			if(ke.getKeyCode() == KeyEvent.KEYCODE_ENTER || ke.getKeyCode() == KeyEvent.KEYCODE_DPAD_CENTER){
@@ -65,13 +62,10 @@ public abstract class InlineAutoCompleterDynamic implements OnKeyListener, TextW
 		return false;
 	}
 
-	@Override
 	public void afterTextChanged(final Editable s) { }
 
-	@Override
 	public void beforeTextChanged(final CharSequence s, final int start, final int count, final int after){ }
 
-	@Override
 	public void onTextChanged(final CharSequence s, final int start, final int before, final int count){
 		// Log.d(Constants.DEBUGTAG, "ON: s=" + s + "   start=" + start + "   before=" + before + "   count=" + count);
 		if((count - before <= 1 // > 1 when this method was invoked by a completion (users type only 1 char each call). <= 0 when overwriting the selection.
@@ -98,7 +92,6 @@ public abstract class InlineAutoCompleterDynamic implements OnKeyListener, TextW
 
 	private void complete(final String aCandidate){
 		this.mEditText.post(new Runnable(){
-			@Override
 			public void run() {
 				final String strBefore = InlineAutoCompleterDynamic.this.getCurrent();
 
@@ -123,7 +116,6 @@ public abstract class InlineAutoCompleterDynamic implements OnKeyListener, TextW
 
 	private void performAutoCompletion(){
 		new Thread(new Runnable(){
-			@Override
 			public void run() {
 				try {
 					final String strNew = InlineAutoCompleterDynamic.this.onGetAutoCompletionStrings().get(0);

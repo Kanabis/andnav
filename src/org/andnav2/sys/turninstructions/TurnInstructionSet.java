@@ -56,167 +56,134 @@ public class TurnInstructionSet implements ITurnInstructionsSet {
 	// Methods from SuperClass/Interfaces
 	// ===========================================================
 
-	@Override
 	public String getMeters() {
 		return this.mMeters;
 	}
 
-	@Override
 	public String getKilometers() {
 		return this.mKilometers;
 	}
 
-	@Override
 	public String getYards() {
 		return this.mYards;
 	}
 
-	@Override
 	public String getMiles() {
 		return this.mMiles;
 	}
 
-	@Override
 	public String getActionNumber() {
 		return this.mActionNumber;
 	}
 
-	@Override
 	public String getAfter() {
 		return this.mAfter;
 	}
 
-	@Override
 	public String getAppoximation() {
 		return this.mApproximation;
 	}
 
-	@Override
 	public String getBefore() {
 		return this.mBefore;
 	}
 
-	@Override
 	public String getCurve() {
 		return this.mCurve;
 	}
 
-	@Override
 	public String getDay() {
 		return this.mDay;
 	}
 
-	@Override
 	public String getDays() {
 		return this.mDays;
 	}
 
-	@Override
 	public String getEndTag() {
 		return this.mEndTag;
 	}
 
-	@Override
 	public String getFor() {
 		return this.mFor;
 	}
 
-	@Override
 	public String getHalfLeft() {
 		return this.mHalfLeft;
 	}
 
-	@Override
 	public String getHalfRight() {
 		return this.mHalfRight;
 	}
 
-	@Override
 	public String getHour() {
 		return this.mHour;
 	}
 
-	@Override
 	public String getHours() {
 		return this.mHours;
 	}
 
-	@Override
 	public String getLeft() {
 		return this.mLeft;
 	}
 
-	@Override
 	public String getMinute() {
 		return this.mMinute;
 	}
 
-	@Override
 	public String getMinutes() {
 		return this.mMinutes;
 	}
 
-	@Override
 	public String getOn() {
 		return this.mOn;
 	}
 
-	@Override
 	public String getPedestrian() {
 		return this.mPedestrian;
 	}
 
-	@Override
 	public String getRight() {
 		return this.mRight;
 	}
 
-	@Override
 	public String getSecond() {
 		return this.mSecond;
 	}
 
-	@Override
 	public String getSeconds() {
 		return this.mSeconds;
 	}
 
-	@Override
 	public String getSharpLeft() {
 		return this.mSharpLeft;
 	}
 
-	@Override
 	public String getSharpRight() {
 		return this.mSharpRight;
 	}
 
-	@Override
 	public String getStartTag() {
 		return this.mStartTag;
 	}
 
-	@Override
 	public String getStraightForward() {
 		return this.mStraightForward;
 	}
 
-	@Override
 	public String getUTurn() {
 		return this.mUTurn;
 	}
 
-	@Override
 	public String getVehicle() {
 		return this.mVehicle;
 	}
 
-	@Override
 	public String getThenCommandWithDistance() {
 		return this.mThenCommandWithDistance;
 	}
 
-	@Override
 	public String getThenCommandWithoutDistance() {
 		return this.mThenCommandWithoutDistance;
 	}

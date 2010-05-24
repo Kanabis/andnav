@@ -80,7 +80,6 @@ public class SettingsRoutingFlags extends AndNavBaseActivity{
 
 		{ // Workaround for false treating of RadioButtons when they are not direct children of RadioGroup
 			this.mRadCar.setOnCheckedChangeListener(new OnCheckedChangeListener(){
-				@Override
 				public void onCheckedChanged(final CompoundButton b, final boolean isChecked) {
 					if(isChecked){
 						SettingsRoutingFlags.this.mRadBicycle.setChecked(false);
@@ -89,7 +88,6 @@ public class SettingsRoutingFlags extends AndNavBaseActivity{
 				}
 			});
 			this.mRadPedestrian.setOnCheckedChangeListener(new OnCheckedChangeListener(){
-				@Override
 				public void onCheckedChanged(final CompoundButton b, final boolean isChecked) {
 					if(isChecked){
 						SettingsRoutingFlags.this.mRadBicycle.setChecked(false);
@@ -98,7 +96,6 @@ public class SettingsRoutingFlags extends AndNavBaseActivity{
 				}
 			});
 			this.mRadBicycle.setOnCheckedChangeListener(new OnCheckedChangeListener(){
-				@Override
 				public void onCheckedChanged(final CompoundButton b, final boolean isChecked) {
 					if(isChecked){
 						SettingsRoutingFlags.this.mRadCar.setChecked(false);

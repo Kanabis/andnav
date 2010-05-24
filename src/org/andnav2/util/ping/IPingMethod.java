@@ -61,7 +61,6 @@ public interface IPingMethod {
 		// Methods from SuperClass/Interfaces
 		// ===========================================================
 
-		@Override
 		public PingResult ping() throws IOException {
 			final String host = this.mURL.getHost();
 			final URLConnection conn = mURL.openConnection();
@@ -106,7 +105,6 @@ public interface IPingMethod {
 		// Methods from SuperClass/Interfaces
 		// ===========================================================
 
-		@Override
 		public PingResult ping() throws IOException {
 			final InetAddress address = InetAddress.getByName(this.mHostName);
 			final String hostName = address.getHostName();
