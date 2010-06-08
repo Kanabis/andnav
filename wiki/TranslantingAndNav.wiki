@@ -1,0 +1,17 @@
+#summary How to submit a AndNav translation
+= Introduction =
+
+This is a small guide how to make a translation for the AndNav application.
+
+= Details =
+
+Under /res create a 'values-xx' directory, where xx is the language code. Then Translate the all the XML files in this directory.
+
+In /res/xml create a new turninstructions_xx.xml file and translate this.
+
+Add your name in /translators.txt 
+
+
+TEST TEST TEST your fix.
+
+Submit either a patch or a commit to trunk.
