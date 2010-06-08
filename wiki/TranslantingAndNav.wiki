@@ -9,6 +9,10 @@ Under /res create a 'values-xx' directory, where xx is the language code. Then T
 
 In /res/xml create a new turninstructions_xx.xml file and translate this.
 
+Add you language to DirectionsLanguge.java
+
+Edit the entrace in enum Country.java: Add contry code 'xx' as 4th parameter and new DirectionsLanguage[]{DirectionsLanguage.DANISH} as the 7th 
+
 Add your name in /translators.txt 
 
 
